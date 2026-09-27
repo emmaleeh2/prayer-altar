@@ -7,673 +7,493 @@
 
 <style>
 *{box-sizing:border-box}
-:root{
---ink:#554f68;
---gold:#c6a45e;
---pink:#f5cfe1;
---blue:#cfe9ff;
---lilac:#dfd2ff;
---mint:#d7f4e8;
---cream:#fff9e9;
-}
-body{
+
+html,body{
 margin:0;
-min-height:100vh;
-font-family:Georgia,"Times New Roman",serif;
-color:var(--ink);
-overflow-x:hidden;
-background:
-radial-gradient(circle at 10% 15%,#ffd9e8 0,transparent 24%),
-radial-gradient(circle at 90% 22%,#caeaff 0,transparent 27%),
-radial-gradient(circle at 15% 80%,#d5f6e9 0,transparent 26%),
-radial-gradient(circle at 85% 78%,#e2d4ff 0,transparent 29%),
-linear-gradient(145deg,#fff9ef,#edf7ff 35%,#fff0f7 68%,#edfff8);
-image-rendering:pixelated;
+min-height:100%;
+background:#e9d9ee;
 }
 
-/* PIXEL SKY */
-.sky{
-position:fixed;
-inset:0;
-pointer-events:none;
-overflow:hidden;
-z-index:-1;
-}
-.star{
-position:absolute;
-color:white;
-text-shadow:0 0 8px #fff,0 0 15px #eac8ff;
-animation:twinkle var(--speed) ease-in-out infinite;
-}
-@keyframes twinkle{
-0%,100%{opacity:.25;transform:scale(.7)}
-50%{opacity:1;transform:scale(1.2)}
-}
-
-/* PAGE */
-.wrap{
-width:min(94%,820px);
-margin:auto;
-padding:35px 0 70px;
-text-align:center;
-}
-
-/* TOP WINDOW */
-.shrine{
-position:relative;
-overflow:hidden;
-border:3px solid #d3b778;
-outline:2px solid rgba(255,255,255,.75);
-box-shadow:
-0 0 0 5px rgba(202,174,118,.18),
-0 20px 60px rgba(106,91,140,.18);
-background:rgba(255,255,255,.35);
-}
-
-/* PIXEL BORDER */
-.shrine:before{
-content:"";
-position:absolute;
-inset:7px;
-border:1px dashed rgba(177,143,79,.45);
-pointer-events:none;
-z-index:5;
-}
-
-.header{
-padding:27px 15px 20px;
-background:
-linear-gradient(90deg,rgba(255,206,226,.6),rgba(211,236,255,.7),rgba(229,213,255,.65),rgba(213,246,234,.65));
-border-bottom:2px solid rgba(190,157,92,.45);
-}
-
-.tiny{
-font-family:"Courier New",monospace;
-font-size:11px;
-letter-spacing:5px;
-color:#9a7b52;
-text-transform:uppercase;
-}
-
-h1{
-margin:8px 0 3px;
-font-weight:normal;
-font-size:clamp(38px,8vw,65px);
-letter-spacing:-2px;
-color:#625a76;
-text-shadow:
-2px 2px 0 #fff,
-4px 4px 0 rgba(210,186,230,.35);
-}
-
-.sparkline{
-color:#c49e58;
-letter-spacing:10px;
-font-size:17px;
-}
-
-/* CELESTIAL CHAPEL */
-.chapel{
-position:relative;
-min-height:550px;
-padding:40px 18px 35px;
-overflow:hidden;
-background:
-linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.25)),
-radial-gradient(ellipse at 50% 20%,rgba(255,255,210,.95),transparent 30%),
-linear-gradient(135deg,#f7cfe0,#d5eaff 35%,#e5d6ff 58%,#d8f4e7);
-}
-
-.ray{
-position:absolute;
-top:-70px;
-left:50%;
-width:430px;
-height:430px;
-transform:translateX(-50%);
-border-radius:50%;
-background:
-conic-gradient(from 0deg,
-rgba(255,219,228,.2),
-rgba(255,244,177,.45),
-rgba(200,235,255,.28),
-rgba(222,204,255,.35),
-rgba(203,247,229,.3),
-rgba(255,219,228,.2));
-animation:halo 24s linear infinite;
-}
-@keyframes halo{
-to{transform:translateX(-50%) rotate(360deg)}
-}
-
-/* ARCH */
-.arch{
-position:relative;
-z-index:1;
-width:min(90%,570px);
-margin:auto;
-padding:34px 20px 27px;
-border:5px double #c8a762;
-border-radius:250px 250px 25px 25px;
-background:rgba(255,255,255,.27);
-box-shadow:
-inset 0 0 40px rgba(255,255,255,.8),
-0 0 30px rgba(255,246,190,.4);
-}
-
-.cross{
-font-size:42px;
-color:#b88e47;
-text-shadow:0 0 12px #fff4bd;
-animation:crossglow 3s ease-in-out infinite;
-}
-@keyframes crossglow{
-50%{text-shadow:0 0 10px white,0 0 28px #ffe89c}
-}
-
-/* JESUS PIXEL PORTRAIT */
-.portrait{
-position:relative;
-width:210px;
-height:245px;
-margin:12px auto 8px;
-}
-
-/* halo */
-.jhalo{
-position:absolute;
-width:145px;
-height:145px;
-left:33px;
-top:4px;
-border:4px dotted rgba(211,170,77,.7);
-border-radius:50%;
-box-shadow:0 0 25px #fff4b8;
-animation:softpulse 3.5s ease-in-out infinite;
-}
-@keyframes softpulse{
-50%{opacity:.65;transform:scale(1.04)}
-}
-
-/* stylised pixel Jesus */
-.hair{
-position:absolute;
-top:42px;
-left:67px;
-width:78px;
-height:92px;
-background:#3f302b;
-border-radius:48% 48% 38% 38%;
-box-shadow:
--9px 13px 0 #3f302b,
-9px 13px 0 #3f302b;
-}
-
-.face{
-position:absolute;
-z-index:2;
-top:49px;
-left:78px;
-width:57px;
-height:72px;
-background:#b97b58;
-border:4px solid #6c4638;
-border-radius:42% 42% 47% 47%;
-box-shadow:inset 6px 0 rgba(220,159,112,.45);
-}
-
-.eye{
-position:absolute;
-top:27px;
-width:5px;
-height:4px;
-background:#342a2a;
-}
-.eye.l{left:12px}
-.eye.r{right:12px}
-
-.nose{
-position:absolute;
-top:33px;
-left:26px;
-width:4px;
-height:12px;
-background:#8f5c47;
-}
-
-.beard{
-position:absolute;
-left:9px;
-bottom:-7px;
-width:38px;
-height:28px;
-background:#49342e;
-clip-path:polygon(0 0,100% 0,82% 75%,50% 100%,18% 75%);
-}
-
-.robe{
-position:absolute;
-z-index:1;
-bottom:0;
-left:31px;
-width:150px;
-height:142px;
-background:
-linear-gradient(110deg,#fff8e9 0 35%,#d9eaff 36% 43%,#fff9ed 44% 70%,#efdfff 71%);
-border:4px solid rgba(139,114,113,.45);
-clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);
-}
-
-.heartlight{
-position:absolute;
-z-index:3;
-top:133px;
-left:94px;
-width:24px;
-height:24px;
-border-radius:50%;
-background:#fff6c6;
-box-shadow:
-0 0 10px white,
-0 0 25px #ffd98b,
-0 0 40px #f5bcd8;
-animation:softpulse 2.5s infinite;
-}
-
-/* SCRIPTURE */
-.verse{
-position:relative;
-z-index:2;
-max-width:540px;
-margin:18px auto 0;
-padding:13px;
-border-top:1px solid rgba(190,153,84,.5);
-border-bottom:1px solid rgba(190,153,84,.5);
-color:#625a70;
-font-size:15px;
-line-height:1.7;
-background:rgba(255,255,255,.35);
-}
-.verse b{
-display:block;
-margin-top:5px;
-font-family:"Courier New",monospace;
-font-size:10px;
-letter-spacing:3px;
-color:#a17d47;
-}
-
-/* ALTAR TABLE */
-.table{
-position:relative;
-z-index:2;
-height:30px;
-width:88%;
-margin:28px auto 0;
-border:3px solid #b79560;
-background:linear-gradient(#fff8e8,#dfc99e);
-box-shadow:0 7px 0 rgba(130,98,70,.22);
-}
-
-.flowers{
-position:relative;
-z-index:3;
-margin-top:-42px;
-font-size:28px;
-letter-spacing:7px;
-filter:saturate(.65);
-}
-
-/* CANDLES */
-.candles{
-position:relative;
-z-index:3;
+body{
 display:flex;
 justify-content:center;
-align-items:flex-end;
-gap:clamp(10px,3vw,28px);
-margin:22px auto 5px;
+font-family:Georgia,"Times New Roman",serif;
+color:#564b63;
+overflow-x:hidden;
 }
 
-.candle{
+/* Entire shrine scales as one object */
+.shrine{
 position:relative;
-width:30px;
-height:62px;
-border:2px solid #bda987;
-background:linear-gradient(90deg,#eadbc3,#fffbea,#ead6bd);
-box-shadow:inset -4px 0 rgba(169,140,111,.15);
+width:min(100vw,768px);
+aspect-ratio:768/1152;
+overflow:hidden;
+background:#ddd;
 }
 
-.candle.tall{height:86px}
-
-.wick{
+.art{
 position:absolute;
-width:2px;
-height:8px;
-background:#5f5145;
-top:-9px;
-left:12px;
+inset:0;
+width:100%;
+height:100%;
+display:block;
 }
 
-.flame{
+/* ------------------------------------------------
+   ANIMATED LIGHT OVERLAYS
+------------------------------------------------ */
+
+.twinkle{
 position:absolute;
-top:-29px;
-left:6px;
-width:15px;
-height:24px;
-border-radius:50% 50% 45% 45%;
-background:#ffd87a;
+z-index:3;
+color:#fffce4;
+font-size:clamp(5px,1.5vw,12px);
+pointer-events:none;
+text-shadow:
+0 0 3px white,
+0 0 7px #fff4a8,
+0 0 12px #e8d5ff;
+animation:twinkle 2.8s ease-in-out infinite;
+}
+
+.t1{left:16%;top:8%;animation-delay:.2s}
+.t2{left:78%;top:12%;animation-delay:1.1s}
+.t3{left:11%;top:28%;animation-delay:1.8s}
+.t4{left:86%;top:31%;animation-delay:.7s}
+.t5{left:21%;top:45%;animation-delay:2.1s}
+.t6{left:73%;top:43%;animation-delay:1.4s}
+
+@keyframes twinkle{
+0%,100%{opacity:.15;transform:scale(.6)}
+50%{opacity:1;transform:scale(1.35)}
+}
+
+.candleGlow{
+position:absolute;
+z-index:2;
+width:4.5%;
+aspect-ratio:1;
+border-radius:50%;
+pointer-events:none;
+background:rgba(255,224,130,.32);
 box-shadow:
-0 0 5px white,
-0 0 12px #ffc96b,
-0 0 22px rgba(255,185,100,.8);
-animation:flicker var(--f) ease-in-out infinite;
-transform-origin:bottom;
+0 0 8px rgba(255,230,150,.8),
+0 0 18px rgba(255,196,108,.55);
+animation:flicker 1.8s ease-in-out infinite;
 }
+
+.cg1{left:19.8%;top:44.5%}
+.cg2{left:29%;top:45.5%;animation-delay:.6s}
+.cg3{right:29%;top:45.5%;animation-delay:1.1s}
+.cg4{right:19.8%;top:44.5%;animation-delay:.3s}
 
 @keyframes flicker{
-0%,100%{transform:rotate(-3deg) scale(1)}
-30%{transform:rotate(4deg) scale(.9,1.08)}
-65%{transform:rotate(-1deg) scale(1.05,.94)}
+0%,100%{
+opacity:.5;
+transform:scale(.85);
+}
+35%{
+opacity:.9;
+transform:scale(1.15,.9);
+}
+65%{
+opacity:.65;
+transform:scale(.9,1.2);
+}
 }
 
-.off .flame{display:none}
-.off{opacity:.7}
+/* ------------------------------------------------
+   FIRST EMPTY PANEL — CANDLE
+------------------------------------------------ */
 
-/* INTERACTION PANELS */
-.panel{
-position:relative;
-padding:34px 20px;
-border-top:3px double rgba(187,151,86,.55);
-background:
-linear-gradient(90deg,rgba(255,222,235,.45),rgba(218,239,255,.5),rgba(231,220,255,.5),rgba(216,247,234,.5));
+.candlePanel{
+position:absolute;
+z-index:5;
+
+/* panel position inside artwork */
+left:13.5%;
+top:56.3%;
+width:73%;
+height:13.4%;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:2%;
 }
 
-.panel h2{
-margin:0 0 6px;
+.panelTitle{
+margin:0 0 .7%;
+font-size:clamp(10px,2.4vw,19px);
 font-weight:normal;
-font-size:29px;
-color:#625a70;
-text-shadow:1px 1px white;
+letter-spacing:.08em;
+color:#5e4f68;
+text-shadow:1px 1px rgba(255,255,255,.7);
 }
 
-.panel p{
-max-width:520px;
-margin:8px auto 20px;
-font-size:13px;
-line-height:1.7;
-color:#81788b;
+.panelText{
+margin:0 0 1.4%;
+font-size:clamp(6px,1.35vw,11px);
+font-style:italic;
+color:#776a7e;
 }
 
 .intentions{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:8px;
-max-width:600px;
-margin:auto;
+width:90%;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:3%;
 }
 
 .intent{
-padding:10px 13px;
-border:1px solid #bea268;
-background:rgba(255,255,255,.65);
-color:#6e6377;
-font:11px "Courier New",monospace;
+min-height:clamp(19px,4vw,31px);
+padding:2% 3%;
+border:1px solid rgba(157,123,73,.65);
+border-radius:2px;
+background:rgba(255,249,239,.62);
+color:#62546b;
+font-family:"Courier New",monospace;
+font-size:clamp(5px,1.1vw,9px);
 cursor:pointer;
-box-shadow:2px 2px 0 rgba(179,150,103,.2);
+box-shadow:
+inset 0 0 5px rgba(255,255,255,.7),
+1px 1px 0 rgba(126,91,67,.15);
 }
 
-.intent:hover,.intent.selected{
-background:#fff6cf;
-transform:translateY(-1px);
+.intent:hover,
+.intent.selected{
+background:rgba(255,240,183,.85);
+box-shadow:
+0 0 7px rgba(255,220,128,.6),
+inset 0 0 5px white;
 }
 
-.lightbtn,.offer{
-margin-top:19px;
-padding:13px 25px;
-border:2px solid #b99a5c;
-background:linear-gradient(#fffdf2,#f3dfbd);
-color:#685b4d;
-font:12px "Courier New",monospace;
+.lightButton{
+margin-top:2%;
+padding:1.5% 6%;
+border:1px solid #9d7744;
+background:linear-gradient(#fff8dc,#e7c783);
+color:#5d4a3c;
+font-family:"Courier New",monospace;
 font-weight:bold;
-letter-spacing:2px;
+font-size:clamp(6px,1.25vw,10px);
+letter-spacing:.12em;
 cursor:pointer;
-box-shadow:3px 3px 0 rgba(139,106,75,.18);
+box-shadow:
+inset 0 0 4px white,
+1px 2px 0 rgba(110,75,49,.25);
 }
 
-.lightbtn:active,.offer:active{
-transform:translate(2px,2px);
-box-shadow:1px 1px 0 rgba(139,106,75,.18);
+.lightButton:active{
+transform:translateY(1px);
 }
 
-#candleMessage{
-min-height:20px;
-margin-top:13px;
-font-size:12px;
+.candleMessage{
+height:10%;
+margin-top:1%;
+font-size:clamp(5px,1.05vw,8px);
 font-style:italic;
-color:#94733f;
+color:#80673f;
 }
 
-/* PRAYER BOX */
+/* ------------------------------------------------
+   SECOND EMPTY PANEL — PRAYER
+------------------------------------------------ */
+
 .prayerPanel{
-padding:38px 22px 40px;
-border-top:3px double rgba(187,151,86,.55);
-background:rgba(255,255,255,.45);
+position:absolute;
+z-index:5;
+
+left:13.5%;
+top:72.3%;
+width:73%;
+height:17.2%;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:2% 4%;
 }
 
-.prayerPanel h2{
-margin:0;
-font-size:30px;
+.prayerTitle{
+margin:0 0 .4%;
+font-size:clamp(10px,2.4vw,19px);
 font-weight:normal;
+letter-spacing:.06em;
 }
 
-.prayerPanel .mini{
-margin:8px auto 22px;
-max-width:520px;
-font-size:13px;
-line-height:1.7;
-color:#81788b;
+.prayerIntro{
+margin:0 0 1%;
+font-size:clamp(5px,1.15vw,9px);
+font-style:italic;
+color:#7c7181;
+}
+
+#prayerForm{
+width:94%;
 }
 
 textarea{
 display:block;
-width:min(100%,590px);
-min-height:155px;
-margin:auto;
-padding:17px;
-border:2px solid #c1a66e;
-outline:3px double rgba(255,255,255,.8);
-background:rgba(255,255,255,.72);
-color:#554f68;
-font:15px/1.6 Georgia,serif;
-resize:vertical;
-box-shadow:inset 0 0 18px rgba(211,191,225,.18);
+width:100%;
+height:clamp(42px,7vw,68px);
+padding:2%;
+resize:none;
+border:1px solid rgba(158,125,79,.65);
+outline:none;
+border-radius:2px;
+background:rgba(255,253,246,.66);
+color:#544c5d;
+font:clamp(7px,1.4vw,11px)/1.45 Georgia,serif;
+box-shadow:
+inset 0 0 8px rgba(186,163,193,.15),
+0 0 3px rgba(255,255,255,.8);
 }
 
 textarea:focus{
-box-shadow:0 0 0 4px rgba(244,217,151,.25);
+border-color:#ad854b;
+box-shadow:
+0 0 5px rgba(255,220,138,.7),
+inset 0 0 8px rgba(186,163,193,.15);
 }
 
-.count{
-width:min(100%,590px);
-margin:8px auto;
-text-align:right;
-font:10px "Courier New",monospace;
-color:#9c92a0;
+textarea::placeholder{
+color:#9d919f;
+font-style:italic;
+}
+
+.formBottom{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:1%;
+}
+
+.counter{
+font-family:"Courier New",monospace;
+font-size:clamp(5px,1vw,8px);
+color:#8e8491;
+}
+
+.offer{
+padding:1.7% 5%;
+border:1px solid #9d7744;
+background:linear-gradient(#fff8dc,#e5c47d);
+color:#59483b;
+font-family:"Courier New",monospace;
+font-size:clamp(6px,1.2vw,10px);
+font-weight:bold;
+letter-spacing:.12em;
+cursor:pointer;
+box-shadow:
+inset 0 0 4px white,
+1px 2px 0 rgba(110,75,49,.22);
 }
 
 .privacy{
-max-width:520px;
-margin:18px auto 0;
-font:10px/1.6 "Courier New",monospace;
-color:#928896;
+margin:1% 0 0;
+font-family:"Courier New",monospace;
+font-size:clamp(4px,.9vw,7px);
+line-height:1.35;
+color:#877d89;
 }
 
-/* WATER / FOOTER */
-.water{
-height:95px;
-position:relative;
-overflow:hidden;
-border-top:2px solid rgba(192,160,99,.4);
-background:
-repeating-linear-gradient(
-0deg,
-rgba(255,255,255,.18) 0 2px,
-transparent 2px 7px),
-linear-gradient(90deg,#d8efff,#efdfff,#d9f6eb,#f8dce8);
-}
+/* ------------------------------------------------
+   VIRTUAL CANDLE THAT APPEARS WHEN LIT
+------------------------------------------------ */
 
-.water:before{
-content:"✦  ·  ✧  ·  ✦  ·  ✧  ·  ✦";
+.virtualFlame{
 position:absolute;
-left:0;
-right:0;
-top:28px;
-color:rgba(255,255,255,.9);
-letter-spacing:16px;
-animation:drift 8s ease-in-out infinite alternate;
+z-index:6;
+display:none;
+
+left:48%;
+top:48.2%;
+
+width:4%;
+height:3%;
+
+border-radius:55% 45% 55% 45%;
+background:
+radial-gradient(
+ellipse at 50% 70%,
+#fffbd0 0 18%,
+#ffd66f 35%,
+#ed9e56 63%,
+transparent 68%
+);
+
+filter:
+drop-shadow(0 0 3px white)
+drop-shadow(0 0 7px #ffc85c);
+
+animation:realFlame .75s ease-in-out infinite alternate;
+transform-origin:bottom;
 }
 
-@keyframes drift{
-to{transform:translateX(20px)}
+.virtualFlame.lit{
+display:block;
 }
 
-.footer{
-padding:18px;
-font:10px/1.7 "Courier New",monospace;
-letter-spacing:1px;
-color:#887c8c;
-background:rgba(255,255,255,.5);
+@keyframes realFlame{
+from{
+transform:rotate(-3deg) scale(.9,1);
+}
+to{
+transform:rotate(4deg) scale(1.08,.92);
+}
 }
 
-/* SUCCESS */
+/* ------------------------------------------------
+   SUCCESS MESSAGE
+------------------------------------------------ */
+
 .success{
 display:none;
-max-width:570px;
-margin:22px auto 0;
-padding:20px;
-border:2px double #c1a05d;
-background:rgba(255,250,219,.65);
-line-height:1.7;
+position:absolute;
+z-index:10;
+
+left:18%;
+top:73.5%;
+width:64%;
+height:14%;
+
+align-items:center;
+justify-content:center;
+flex-direction:column;
+
+padding:3%;
+
+border:1px solid rgba(172,135,75,.8);
+background:rgba(255,250,225,.91);
+box-shadow:
+0 0 14px rgba(255,230,166,.7),
+inset 0 0 15px white;
+
+text-align:center;
+font-size:clamp(7px,1.5vw,12px);
+line-height:1.55;
 }
 
-@media(max-width:550px){
-.wrap{width:96%}
-.chapel{min-height:520px;padding-left:8px;padding-right:8px}
-.arch{width:96%;padding-left:5px;padding-right:5px}
-.portrait{transform:scale(.88);margin-top:-2px;margin-bottom:-5px}
-.flowers{font-size:21px;letter-spacing:3px}
-.candles{gap:10px}
-.candle{width:25px}
-.wick{left:10px}
-.flame{left:4px}
+.success strong{
+color:#8d6c39;
+font-weight:normal;
+letter-spacing:.08em;
 }
+
+/* MOBILE */
+@media(max-width:500px){
+.intentions{
+width:94%;
+gap:2%;
+}
+
+.candlePanel{
+padding-left:1%;
+padding-right:1%;
+}
+
+.prayerPanel{
+padding-left:2%;
+padding-right:2%;
+}
+}
+
 @media(prefers-reduced-motion:reduce){
-*{animation:none!important}
+*{
+animation:none!important;
+}
 }
 </style>
 </head>
 
 <body>
 
-<div class="sky" id="sky"></div>
+<main class="shrine">
 
-<div class="wrap">
+<img
+class="art"
+src="prayer-altar-shrine.png"
+alt="A pastel pixel-art prayer shrine centred on Jesus">
 
-<div class="shrine">
+<!-- tiny atmospheric sparkles -->
+<span class="twinkle t1">✦</span>
+<span class="twinkle t2">✦</span>
+<span class="twinkle t3">✧</span>
+<span class="twinkle t4">✦</span>
+<span class="twinkle t5">✧</span>
+<span class="twinkle t6">✦</span>
 
-<header class="header">
-<div class="tiny">✦ A quiet place before God ✦</div>
-<h1>The Prayer Altar</h1>
-<div class="sparkline">✦ ✧ ✦</div>
-</header>
+<!-- subtle animated glow over illustrated candles -->
+<span class="candleGlow cg1"></span>
+<span class="candleGlow cg2"></span>
+<span class="candleGlow cg3"></span>
+<span class="candleGlow cg4"></span>
 
-<section class="chapel">
+<!-- appears when visitor lights a candle -->
+<div class="virtualFlame" id="virtualFlame"></div>
 
-<div class="ray"></div>
+<!-- LIGHT A CANDLE PANEL -->
+<section class="candlePanel">
 
-<div class="arch">
+<h2 class="panelTitle">✦ Light a Candle ✦</h2>
 
-<div class="cross">✝</div>
-
-<div class="portrait" aria-label="Stylised pixel-art representation of Jesus">
-<div class="jhalo"></div>
-<div class="hair"></div>
-<div class="face">
-<div class="eye l"></div>
-<div class="eye r"></div>
-<div class="nose"></div>
-<div class="beard"></div>
-</div>
-<div class="robe"></div>
-<div class="heartlight"></div>
-</div>
-
-<div class="verse">
-“Come to me, all you who are weary and burdened,
-and I will give you rest.”
-<b>Matthew 11:28</b>
-</div>
-
-<div class="candles">
-<div class="candle tall"><i class="wick"></i><i class="flame" style="--f:1.8s"></i></div>
-<div class="candle"><i class="wick"></i><i class="flame" style="--f:2.2s"></i></div>
-<div class="candle tall"><i class="wick"></i><i class="flame" style="--f:1.6s"></i></div>
-<div class="candle"><i class="wick"></i><i class="flame" style="--f:2.5s"></i></div>
-<div class="candle tall"><i class="wick"></i><i class="flame" style="--f:1.9s"></i></div>
-</div>
-
-<div class="table"></div>
-<div class="flowers">🌸 ✦ 🤍 ✦ 🌷 ✦ 🤍 ✦ 🌸</div>
-
-</div>
-</section>
-
-<section class="panel">
-
-<div class="tiny">✦ Votive Chapel ✦</div>
-<h2>Light a Candle</h2>
-
-<p>
-Light a virtual candle as a small act of prayer.
-You do not need to tell us who or what it is for.
+<p class="panelText">
+Choose an intention, or simply hold it quietly before God.
 </p>
 
-<div class="candles" id="votives">
-<div class="candle off"><i class="wick"></i><i class="flame" style="--f:1.8s"></i></div>
-<div class="candle off"><i class="wick"></i><i class="flame" style="--f:2.4s"></i></div>
-<div class="candle off"><i class="wick"></i><i class="flame" style="--f:1.7s"></i></div>
-<div class="candle off"><i class="wick"></i><i class="flame" style="--f:2.1s"></i></div>
-<div class="candle off"><i class="wick"></i><i class="flame" style="--f:1.9s"></i></div>
-<div class="candle off"><i class="wick"></i><i class="flame" style="--f:2.6s"></i></div>
-</div>
-
 <div class="intentions">
-<button class="intent">For Myself</button>
-<button class="intent">For Someone I Love</button>
-<button class="intent">For Someone Suffering</button>
-<button class="intent">In Thanksgiving</button>
-<button class="intent">For the Departed</button>
-<button class="intent">Other Intention</button>
+
+<button class="intent" type="button">
+For Myself
+</button>
+
+<button class="intent" type="button">
+For Someone I Love
+</button>
+
+<button class="intent" type="button">
+For Someone Suffering
+</button>
+
+<button class="intent" type="button">
+In Thanksgiving
+</button>
+
+<button class="intent" type="button">
+For the Departed
+</button>
+
+<button class="intent" type="button">
+Other Intention
+</button>
+
 </div>
 
-<button class="lightbtn" id="lightCandle">✦ LIGHT A CANDLE ✦</button>
+<button
+class="lightButton"
+id="lightButton"
+type="button">
+LIGHT A CANDLE
+</button>
 
-<div id="candleMessage"></div>
+<div
+class="candleMessage"
+id="candleMessage">
+</div>
 
 </section>
 
+<!-- PRAYER PANEL -->
 <section class="prayerPanel">
 
-<div class="tiny">✦ Private Prayer Archive ✦</div>
+<h2 class="prayerTitle">
+✦ Leave a Prayer ✦
+</h2>
 
-<h2>Leave a Prayer</h2>
-
-<p class="mini">
-Bring what is on your heart before God.
-Your prayer will not be displayed publicly.
-It will be received privately and personally prayed over.
+<p class="prayerIntro">
+Your intention will be received privately and personally prayed over.
 </p>
 
 <form id="prayerForm">
@@ -685,103 +505,133 @@ maxlength="5000"
 placeholder="Lord, I bring before You..."
 required></textarea>
 
-<div class="count">
+<div class="formBottom">
+
+<div class="counter">
 <span id="count">0</span> / 5000
 </div>
 
-<button class="offer" type="submit">
-✦ OFFER PRAYER ✦
+<button
+class="offer"
+type="submit">
+OFFER PRAYER
 </button>
+
+</div>
 
 </form>
 
-<div class="success" id="success">
-<strong>✦ Your prayer has been received ✦</strong><br><br>
-Your intention has been placed upon the prayer altar
-and will be personally prayed over.<br><br>
-May the Lord bless you and keep you.<br>
-🕯
-</div>
-
-<div class="privacy">
+<p class="privacy">
 No name or email is required. Your prayer will not be displayed publicly.
-Please avoid including identifying or contact information if you prefer
-to remain anonymous.
-</div>
+Please avoid identifying information if you prefer to remain anonymous.
+</p>
 
 </section>
 
-<div class="water"></div>
+<!-- eventually shown after real Supabase submission -->
+<div class="success" id="success">
 
-<footer class="footer">
-✦ MAY THE LORD BLESS YOU AND KEEP YOU ✦<br>
-MAY HIS FACE SHINE UPON YOU AND GIVE YOU PEACE
-</footer>
+<strong>
+✦ Your prayer has been received ✦
+</strong>
+
+<br>
+
+Your intention has been placed upon the prayer altar
+and will be personally prayed over.
+
+<br><br>
+
+May the Lord bless you and keep you. 🕯️
 
 </div>
-</div>
+
+</main>
 
 <script>
 
-/* stars */
-const sky=document.getElementById("sky");
+/* intention buttons */
 
-for(let i=0;i<32;i++){
-const s=document.createElement("span");
-s.className="star";
-s.textContent=i%4===0?"✦":"·";
-s.style.left=Math.random()*100+"%";
-s.style.top=Math.random()*100+"%";
-s.style.fontSize=(8+Math.random()*14)+"px";
-s.style.setProperty("--speed",(2+Math.random()*4)+"s");
-s.style.animationDelay=(-Math.random()*5)+"s";
-sky.appendChild(s);
-}
+const intentions =
+document.querySelectorAll(".intent");
 
-/* intention selection */
-const intentions=document.querySelectorAll(".intent");
+intentions.forEach(button=>{
 
-intentions.forEach(btn=>{
-btn.addEventListener("click",()=>{
-intentions.forEach(b=>b.classList.remove("selected"));
-btn.classList.add("selected");
-});
+button.addEventListener("click",()=>{
+
+intentions.forEach(
+item=>item.classList.remove("selected")
+);
+
+button.classList.add("selected");
+
 });
 
-/* candle lighting */
-const lightButton=document.getElementById("lightCandle");
-const votives=[...document.querySelectorAll("#votives .candle")];
-const candleMessage=document.getElementById("candleMessage");
-let candleIndex=0;
+});
+
+
+/* virtual candle */
+
+const lightButton =
+document.getElementById("lightButton");
+
+const virtualFlame =
+document.getElementById("virtualFlame");
+
+const candleMessage =
+document.getElementById("candleMessage");
 
 lightButton.addEventListener("click",()=>{
 
-if(candleIndex>=votives.length){
-votives.forEach(v=>v.classList.add("off"));
-candleIndex=0;
+virtualFlame.classList.add("lit");
+
+const chosen =
+document.querySelector(".intent.selected");
+
+if(chosen){
+
+candleMessage.textContent =
+"Your candle has been lit "
++ chosen.textContent.trim().toLowerCase()
++ ". ✦";
+
+}else{
+
+candleMessage.textContent =
+"Your candle has been lit. May your intention rest before God. ✦";
+
 }
 
-votives[candleIndex].classList.remove("off");
-candleIndex++;
-
-const selected=document.querySelector(".intent.selected");
-
-candleMessage.textContent=selected
-?"Your candle has been lit "+selected.textContent.toLowerCase()+". ✦"
-:"Your candle has been lit. May your intention rest before God. ✦";
 });
 
-/* prayer counter */
-const prayer=document.getElementById("prayer");
-const count=document.getElementById("count");
+
+/* character counter */
+
+const prayer =
+document.getElementById("prayer");
+
+const count =
+document.getElementById("count");
 
 prayer.addEventListener("input",()=>{
-count.textContent=prayer.value.length;
+
+count.textContent =
+prayer.value.length;
+
 });
 
-/* submission connection comes next */
-document.getElementById("prayerForm").addEventListener("submit",e=>{
-e.preventDefault();
+
+/*
+Prayer submission intentionally disabled
+until the visual placement is approved.
+*/
+
+document
+.getElementById("prayerForm")
+.addEventListener("submit",event=>{
+
+event.preventDefault();
+
 });
 
 </script>
