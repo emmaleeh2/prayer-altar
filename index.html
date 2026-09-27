@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +10,25 @@
 <style>
 
 /* =========================================================
-   PAGE
+   BASIC PAGE
 ========================================================= */
 
 *{
     box-sizing:border-box;
 }
 
-html{
+html,
+body{
     margin:0;
+    padding:0;
+
+    width:100%;
     min-height:100%;
+
     overflow-x:hidden;
-    overflow-y:auto;
 }
 
 body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    overflow-x:hidden;
-
     background:
         radial-gradient(
             circle at 50% 25%,
@@ -43,28 +41,45 @@ body{
 
 /* =========================================================
    SHRINE
+
+   Desktop:
+   maximum width 700px.
+
+   Mobile:
+   the ENTIRE shrine shrinks proportionally to the width
+   of the phone instead of being cropped.
 ========================================================= */
 
 .shrine{
     position:relative;
-    width:min(700px,100vw);
+
+    width:700px;
+    max-width:100%;
+
     aspect-ratio:2 / 3;
-    flex:none;
+
+    margin:0 auto;
+
     overflow:hidden;
 
     box-shadow:
         0 0 35px rgba(111,83,133,.12);
 }
 
+
 .art{
     position:absolute;
+
     inset:0;
+
     z-index:1;
+
+    display:block;
 
     width:100%;
     height:100%;
 
-    display:block;
+    object-fit:fill;
 
     pointer-events:none;
     user-select:none;
@@ -72,40 +87,49 @@ body{
 
 
 /* =========================================================
-   JESUS — HALO
+   JESUS — HALO GLOW
 ========================================================= */
 
 .halo-glow{
     position:absolute;
+
     z-index:2;
 
     left:37%;
     top:17%;
 
     width:26%;
+
     aspect-ratio:1;
 
     border-radius:50%;
+
     pointer-events:none;
 
     background:
         radial-gradient(
             circle,
+
             rgba(255,255,240,.48) 0%,
             rgba(255,238,164,.28) 27%,
             rgba(255,207,130,.12) 50%,
+
             transparent 73%
         );
 
     filter:blur(4px);
+
     mix-blend-mode:screen;
 
-    animation:haloPulse 4.5s ease-in-out infinite;
+    animation:
+        haloPulse 4.5s ease-in-out infinite;
 }
+
 
 @keyframes haloPulse{
 
-    0%,100%{
+    0%,
+    100%{
         opacity:.42;
         transform:scale(.94);
     }
@@ -114,44 +138,54 @@ body{
         opacity:.95;
         transform:scale(1.08);
     }
+
 }
 
 
 /* =========================================================
-   JESUS — CHEST
+   JESUS — CHEST GLOW
 ========================================================= */
 
 .chest-glow{
     position:absolute;
+
     z-index:3;
 
     left:43%;
     top:31.3%;
 
     width:14%;
+
     aspect-ratio:1;
 
     border-radius:50%;
+
     pointer-events:none;
 
     background:
         radial-gradient(
             circle,
+
             rgba(255,255,245,.9) 0%,
             rgba(255,239,166,.52) 20%,
             rgba(255,194,118,.23) 43%,
+
             transparent 72%
         );
 
     filter:blur(5px);
+
     mix-blend-mode:screen;
 
-    animation:chestPulse 3s ease-in-out infinite;
+    animation:
+        chestPulse 3s ease-in-out infinite;
 }
+
 
 @keyframes chestPulse{
 
-    0%,100%{
+    0%,
+    100%{
         opacity:.40;
         transform:scale(.82);
     }
@@ -160,18 +194,17 @@ body{
         opacity:1;
         transform:scale(1.18);
     }
+
 }
 
 
 /* =========================================================
-   REAL ANIMATED FLAMES
-
-   These are deliberately small and bright.
-   Each sits directly over an existing painted flame.
+   FLICKERING DECORATIVE CANDLES
 ========================================================= */
 
 .flame{
     position:absolute;
+
     z-index:7;
 
     width:6px;
@@ -186,16 +219,19 @@ body{
         60% 60% 55% 55% /
         75% 75% 40% 40%;
 
-    transform-origin:50% 100%;
+    transform-origin:
+        50% 100%;
 
     background:
         radial-gradient(
             ellipse at 50% 70%,
+
             #ffffff 0%,
             #fffbd0 18%,
             #ffe16e 40%,
             #ffad45 63%,
             rgba(255,142,42,.7) 72%,
+
             transparent 78%
         );
 
@@ -209,8 +245,6 @@ body{
 }
 
 
-/* surrounding candlelight */
-
 .flame::after{
     content:"";
 
@@ -222,23 +256,25 @@ body{
     width:25px;
     height:25px;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
+
             rgba(255,225,120,.32),
+
             rgba(255,190,75,.12) 42%,
+
             transparent 70%
         );
 
     filter:blur(2px);
 }
 
-
-/* obvious flame movement */
 
 @keyframes flameDance{
 
@@ -286,21 +322,20 @@ body{
             scale(.83,1.17)
             rotate(-4deg);
     }
+
 }
 
 
 /* =========================================================
-   FLAME POSITIONS
-
-   Calibrated from the supplied 700px-wide screenshot.
+   CORRECTED FLAME POSITIONS
 ========================================================= */
 
 
-/* LARGE LEFT CANDLE */
+/* tall left candle */
 
 .f1{
-    left:27.7%;
-    top:27.6%;
+    left:27.6%;
+    top:28.55%;
 
     width:7px;
     height:16px;
@@ -309,11 +344,11 @@ body{
 }
 
 
-/* LARGE RIGHT CANDLE */
+/* tall right candle */
 
 .f2{
-    left:72.3%;
-    top:27.6%;
+    left:72.15%;
+    top:28.55%;
 
     width:7px;
     height:16px;
@@ -323,66 +358,56 @@ body{
 }
 
 
-/* SMALL CANDLE BESIDE LEFT FLOWERS */
+/* smaller altar candles */
 
 .f3{
-    left:33.7%;
-    top:44.7%;
+    left:33.65%;
+    top:45.55%;
 
     animation-duration:.83s;
     animation-delay:-.31s;
 }
 
 
-/* LEFT-CENTRE ALTAR FLAME */
-
 .f4{
-    left:42.2%;
-    top:44.5%;
+    left:42.15%;
+    top:45.35%;
 
     animation-duration:1.17s;
     animation-delay:-.71s;
 }
 
 
-/* CENTRE ALTAR FLAME */
-
 .f5{
-    left:49.7%;
-    top:43.9%;
+    left:49.65%;
+    top:44.75%;
 
     animation-duration:.89s;
     animation-delay:-.22s;
 }
 
 
-/* RIGHT-CENTRE ALTAR FLAME */
-
 .f6{
-    left:56.4%;
-    top:45.2%;
+    left:56.35%;
+    top:46.05%;
 
     animation-duration:1.13s;
     animation-delay:-.82s;
 }
 
 
-/* RIGHT FLOWER CANDLE */
-
 .f7{
-    left:62.8%;
-    top:44.8%;
+    left:62.75%;
+    top:45.65%;
 
     animation-duration:.96s;
     animation-delay:-.44s;
 }
 
 
-/* FARTHER RIGHT ALTAR FLAME */
-
 .f8{
-    left:67.4%;
-    top:46.4%;
+    left:67.35%;
+    top:47.25%;
 
     animation-duration:1.21s;
     animation-delay:-.67s;
@@ -391,19 +416,15 @@ body{
 
 /* =========================================================
    WATERFALLS
-
-   These are clipped into narrow irregular shapes matching
-   the visible falls rather than rectangular blocks.
 ========================================================= */
 
 .fall{
     position:absolute;
+
     z-index:4;
 
-    top:32.6%;
-    height:10.6%;
-
     overflow:hidden;
+
     pointer-events:none;
 
     mix-blend-mode:screen;
@@ -412,53 +433,55 @@ body{
 }
 
 
-/* screenshot: left fall roughly x 370–430 */
-
 .fall-left{
-    left:5.7%;
-    width:8.7%;
+    left:4.9%;
+    top:36.1%;
 
-    clip-path:polygon(
-        18% 0%,
-        88% 0%,
-        82% 18%,
-        94% 38%,
-        78% 58%,
-        90% 78%,
-        66% 100%,
-        8% 100%,
-        18% 80%,
-        5% 60%,
-        17% 39%,
-        8% 20%
-    );
+    width:10.2%;
+    height:11.8%;
+
+    clip-path:
+        polygon(
+            18% 0%,
+            88% 0%,
+            82% 18%,
+            94% 38%,
+            78% 58%,
+            90% 78%,
+            66% 100%,
+            8% 100%,
+            18% 80%,
+            5% 60%,
+            17% 39%,
+            8% 20%
+        );
 }
 
-
-/* screenshot: right fall roughly x 930–990 */
 
 .fall-right{
-    right:5.6%;
-    width:8.7%;
+    right:4.8%;
+    top:36.1%;
 
-    clip-path:polygon(
-        12% 0%,
-        82% 0%,
-        92% 19%,
-        80% 38%,
-        95% 59%,
-        81% 79%,
-        92% 100%,
-        25% 100%,
-        10% 79%,
-        21% 59%,
-        7% 38%,
-        18% 18%
-    );
+    width:10.2%;
+    height:11.8%;
+
+    clip-path:
+        polygon(
+            12% 0%,
+            82% 0%,
+            92% 19%,
+            80% 38%,
+            95% 59%,
+            81% 79%,
+            92% 100%,
+            25% 100%,
+            10% 79%,
+            21% 59%,
+            7% 38%,
+            18% 18%
+        );
 }
 
-
-/* moving water streaks */
 
 .fall::before{
     content:"";
@@ -505,21 +528,23 @@ body{
 @keyframes fallingWater{
 
     from{
-        transform:translateY(-18%);
+        transform:
+            translateY(-18%);
     }
 
     to{
-        transform:translateY(28%);
+        transform:
+            translateY(28%);
     }
+
 }
 
-
-/* secondary moving highlights */
 
 .fall::after{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     background:
@@ -550,22 +575,28 @@ body{
 
     from{
         opacity:.25;
-        transform:translateX(-5%);
+
+        transform:
+            translateX(-5%);
     }
 
     to{
         opacity:.9;
-        transform:translateX(5%);
+
+        transform:
+            translateX(5%);
     }
+
 }
 
 
 /* =========================================================
-   WATERFALL BASE SPARKLE
+   WATERFALL SPRAY
 ========================================================= */
 
 .spray{
     position:absolute;
+
     z-index:5;
 
     width:9%;
@@ -578,8 +609,11 @@ body{
     background:
         radial-gradient(
             ellipse,
+
             rgba(255,255,255,.55) 0%,
+
             rgba(216,239,255,.22) 40%,
+
             transparent 72%
         );
 
@@ -593,14 +627,14 @@ body{
 
 
 .spray-left{
-    left:5.5%;
-    top:40.2%;
+    left:5.2%;
+    top:45.2%;
 }
 
 
 .spray-right{
-    right:5.4%;
-    top:40.2%;
+    right:5.1%;
+    top:45.2%;
 
     animation-delay:-.9s;
 }
@@ -617,15 +651,17 @@ body{
         opacity:.8;
         transform:scale(1.12);
     }
+
 }
 
 
 /* =========================================================
-   TWINKLING SKY
+   TWINKLES
 ========================================================= */
 
 .twinkle{
     position:absolute;
+
     z-index:6;
 
     width:3px;
@@ -654,7 +690,9 @@ body{
 
 @keyframes twinkle{
 
-    0%,65%,100%{
+    0%,
+    65%,
+    100%{
         opacity:0;
         transform:scale(.3);
     }
@@ -673,39 +711,126 @@ body{
         opacity:.35;
         transform:scale(.7);
     }
+
 }
 
 
-.t1 {left:9%; top:5%; animation-delay:-.4s;}
-.t2 {left:14%; top:9%; animation-delay:-1.8s;}
-.t3 {left:21%; top:4%; animation-delay:-2.7s;}
-.t4 {left:28%; top:12%; animation-delay:-.8s;}
+.t1{
+    left:9%;
+    top:5%;
+    animation-delay:-.4s;
+}
 
-.t5 {left:37%; top:6%; animation-delay:-2.2s;}
-.t6 {left:43%; top:12%; animation-delay:-1.1s;}
-.t7 {left:56%; top:7%; animation-delay:-3.1s;}
-.t8 {left:63%; top:14%; animation-delay:-.5s;}
+.t2{
+    left:14%;
+    top:9%;
+    animation-delay:-1.8s;
+}
 
-.t9 {left:73%; top:5%; animation-delay:-2.5s;}
-.t10{left:81%; top:10%; animation-delay:-1.4s;}
-.t11{left:88%; top:4%; animation-delay:-3.3s;}
-.t12{left:95%; top:13%; animation-delay:-.9s;}
+.t3{
+    left:21%;
+    top:4%;
+    animation-delay:-2.7s;
+}
 
-.t13{left:6%; top:17%; animation-delay:-2.9s;}
-.t14{left:18%; top:16%; animation-delay:-.3s;}
-.t15{left:31%; top:18%; animation-delay:-1.9s;}
+.t4{
+    left:28%;
+    top:12%;
+    animation-delay:-.8s;
+}
 
-.t16{left:68%; top:17%; animation-delay:-2.4s;}
-.t17{left:82%; top:18%; animation-delay:-.7s;}
-.t18{left:94%; top:19%; animation-delay:-3.5s;}
+.t5{
+    left:37%;
+    top:6%;
+    animation-delay:-2.2s;
+}
+
+.t6{
+    left:43%;
+    top:12%;
+    animation-delay:-1.1s;
+}
+
+.t7{
+    left:56%;
+    top:7%;
+    animation-delay:-3.1s;
+}
+
+.t8{
+    left:63%;
+    top:14%;
+    animation-delay:-.5s;
+}
+
+.t9{
+    left:73%;
+    top:5%;
+    animation-delay:-2.5s;
+}
+
+.t10{
+    left:81%;
+    top:10%;
+    animation-delay:-1.4s;
+}
+
+.t11{
+    left:88%;
+    top:4%;
+    animation-delay:-3.3s;
+}
+
+.t12{
+    left:95%;
+    top:13%;
+    animation-delay:-.9s;
+}
+
+.t13{
+    left:6%;
+    top:17%;
+    animation-delay:-2.9s;
+}
+
+.t14{
+    left:18%;
+    top:16%;
+    animation-delay:-.3s;
+}
+
+.t15{
+    left:31%;
+    top:18%;
+    animation-delay:-1.9s;
+}
+
+.t16{
+    left:68%;
+    top:17%;
+    animation-delay:-2.4s;
+}
+
+.t17{
+    left:82%;
+    top:18%;
+    animation-delay:-.7s;
+}
+
+.t18{
+    left:94%;
+    top:19%;
+    animation-delay:-3.5s;
+}
 
 
 /* =========================================================
-   CROSS-SHAPED STAR GLINTS
+   STAR GLINTS
 ========================================================= */
 
 .glint{
     position:absolute;
+
     z-index:6;
 
     width:2px;
@@ -779,7 +904,9 @@ body{
 
 @keyframes glint{
 
-    0%,74%,100%{
+    0%,
+    74%,
+    100%{
         opacity:0;
         transform:scale(.4);
     }
@@ -793,83 +920,29 @@ body{
         opacity:.2;
         transform:scale(.7);
     }
+
 }
 
 
 /* =========================================================
-   VISITOR CANDLE LIGHT
+   PRAYER AREA
+
+   Light-a-Candle is completely removed.
+
+   Heading sits in the blank altar panel.
+   Text box sits inside the lower pink framed area.
 ========================================================= */
 
-.visitor-light{
+.prayer-panel{
     position:absolute;
-    z-index:6;
 
-    left:46%;
-    top:45%;
+    z-index:20;
 
-    width:8%;
-    aspect-ratio:1;
+    left:18%;
+    top:57%;
 
-    border-radius:50%;
-
-    pointer-events:none;
-
-    opacity:0;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,215,.9),
-            rgba(255,211,93,.45) 28%,
-            rgba(255,158,55,.18) 50%,
-            transparent 73%
-        );
-
-    filter:blur(3px);
-    mix-blend-mode:screen;
-
-    transition:opacity .8s ease;
-
-    animation:
-        visitorPulse 1.5s ease-in-out infinite alternate;
-}
-
-
-.visitor-light.lit{
-    opacity:1;
-}
-
-
-@keyframes visitorPulse{
-
-    from{
-        transform:scale(.75);
-    }
-
-    to{
-        transform:scale(1.25);
-    }
-}
-
-
-/* =========================================================
-   LIGHT A CANDLE PANEL
-========================================================= */
-
-.candle-panel{
-    position:absolute;
-    z-index:10;
-
-    left:14%;
-    top:57.2%;
-
-    width:72%;
-    height:9.5%;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    width:64%;
+    height:31%;
 
     font-family:
         "Courier New",
@@ -879,11 +952,21 @@ body{
 
 
 /* =========================================================
-   TITLES
+   LEAVE A PRAYER TITLE
 ========================================================= */
 
-.candle-title,
 .prayer-title{
+    position:absolute;
+
+    top:3%;
+    left:0;
+
+    width:100%;
+
+    margin:0;
+
+    text-align:center;
+
     color:#493154;
 
     font-family:
@@ -891,9 +974,11 @@ body{
         Courier,
         monospace;
 
+    font-size:20px;
     font-weight:bold;
 
     text-transform:uppercase;
+
     letter-spacing:2px;
 
     text-shadow:
@@ -902,37 +987,130 @@ body{
 }
 
 
-.candle-title{
-    margin:0 0 14px;
-    font-size:20px;
-}
-
-
-.prayer-title{
-    margin:0 0 13px;
-    font-size:20px;
-}
-
-
-.candle-title::before,
-.candle-title::after,
 .prayer-title::before,
 .prayer-title::after{
     content:"✦";
+
     color:#996633;
+
     margin:0 8px;
 }
 
 
 /* =========================================================
-   BUTTONS
+   FORM
 ========================================================= */
 
-.light-button,
+#prayerForm{
+    position:absolute;
+
+    left:0;
+    top:29%;
+
+    width:100%;
+
+    margin:0;
+}
+
+
+/* =========================================================
+   TEXTAREA
+
+   SOLID background.
+   BLACK border.
+   No transparency.
+========================================================= */
+
+textarea{
+    display:block;
+
+    width:100%;
+    height:145px;
+
+    margin:0;
+
+    padding:13px;
+
+    resize:none;
+
+    outline:none;
+
+    border:1px solid #000;
+
+    border-radius:0;
+
+    background:#fffaf4;
+
+    color:#2d2230;
+
+    caret-color:#000;
+
+    box-shadow:none;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size:14px;
+    font-weight:500;
+
+    line-height:1.5;
+}
+
+
+textarea:focus{
+    border:1px solid #000;
+
+    background:#fffdf9;
+
+    outline:1px solid rgba(128,92,140,.35);
+
+    box-shadow:none;
+}
+
+
+/* =========================================================
+   OFFER PRAYER ROW
+========================================================= */
+
+.form-bottom{
+    position:relative;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    margin-top:12px;
+}
+
+
+.counter{
+    position:absolute;
+
+    right:0;
+
+    color:#35293a;
+
+    font-size:10px;
+    font-weight:bold;
+}
+
+
+/* =========================================================
+   OFFER PRAYER BUTTON
+========================================================= */
+
 .offer-button{
     appearance:none;
 
+    padding:9px 25px;
+
     border:1px solid #865c35;
+
     border-radius:0;
 
     background:
@@ -953,7 +1131,9 @@ body{
         Courier,
         monospace;
 
+    font-size:13px;
     font-weight:bold;
+
     letter-spacing:2px;
 
     cursor:pointer;
@@ -968,19 +1148,6 @@ body{
 }
 
 
-.light-button{
-    padding:9px 27px;
-    font-size:13px;
-}
-
-
-.offer-button{
-    padding:9px 25px;
-    font-size:13px;
-}
-
-
-.light-button:hover,
 .offer-button:hover{
     background:
         linear-gradient(
@@ -994,139 +1161,8 @@ body{
 }
 
 
-.light-button:active,
 .offer-button:active{
     transform:translateY(1px);
-}
-
-
-/* =========================================================
-   CANDLE MESSAGE
-========================================================= */
-
-.candle-message{
-    min-height:16px;
-    margin-top:10px;
-
-    color:#4d3657;
-
-    font-size:11px;
-    font-weight:bold;
-    text-align:center;
-}
-
-
-/* =========================================================
-   PRAYER PANEL
-========================================================= */
-
-.prayer-panel{
-    position:absolute;
-    z-index:10;
-
-    left:18.5%;
-    top:69%;
-
-    width:63%;
-    height:19.5%;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
-}
-
-
-#prayerForm{
-    width:100%;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-
-/* =========================================================
-   TEXTAREA
-========================================================= */
-
-textarea{
-    display:block;
-
-    width:100%;
-    height:150px;
-
-    padding:13px;
-
-    resize:none;
-    outline:none;
-
-    border:1px solid #684b73;
-    border-radius:0;
-
-    background:
-        rgba(255,246,244,.57);
-
-    box-shadow:
-        inset 1px 1px rgba(255,255,255,.88),
-        0 0 4px rgba(83,54,91,.14);
-
-    color:#3d2947;
-    caret-color:#805329;
-
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
-
-    font-size:14px;
-    font-weight:500;
-
-    line-height:1.55;
-}
-
-
-textarea:focus{
-    border-color:#8b5b31;
-
-    background:
-        rgba(255,249,242,.67);
-
-    box-shadow:
-        0 0 7px rgba(255,205,108,.42),
-        inset 1px 1px white;
-}
-
-
-/* =========================================================
-   FORM BOTTOM
-========================================================= */
-
-.form-bottom{
-    position:relative;
-
-    width:100%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    margin-top:12px;
-}
-
-
-.counter{
-    position:absolute;
-    right:0;
-
-    color:#493451;
-
-    font-size:10px;
-    font-weight:bold;
 }
 
 
@@ -1135,9 +1171,14 @@ textarea:focus{
 ========================================================= */
 
 .privacy{
-    width:96%;
+    position:absolute;
 
-    margin:14px auto 0;
+    left:0;
+    top:83%;
+
+    width:100%;
+
+    margin:0;
 
     color:#432d4c;
 
@@ -1145,35 +1186,140 @@ textarea:focus{
 
     font-size:11px;
     font-weight:bold;
-    line-height:1.55;
+
+    line-height:1.5;
 
     text-shadow:
-        1px 1px rgba(255,255,255,.85);
+        1px 1px rgba(255,255,255,.9);
 }
 
 
 /* =========================================================
    MOBILE
+
+   Everything remains in exactly the same relative position,
+   but the whole 2:3 shrine scales down to the phone width.
 ========================================================= */
 
 @media(max-width:700px){
 
+    body{
+        width:100%;
+        min-width:0;
+    }
+
     .shrine{
         width:100vw;
+        max-width:100vw;
+
+        margin:0;
+
+        aspect-ratio:2 / 3;
     }
+
+
+    /* Scale typography down with the artwork */
+
+    .prayer-title{
+        font-size:clamp(12px,3.7vw,20px);
+        letter-spacing:1px;
+    }
+
+
+    .prayer-title::before,
+    .prayer-title::after{
+        margin:0 4px;
+    }
+
+
+    textarea{
+        height:clamp(80px,21vw,145px);
+
+        padding:8px;
+
+        font-size:clamp(10px,2.8vw,14px);
+    }
+
+
+    .offer-button{
+        padding:
+            clamp(5px,1.5vw,9px)
+            clamp(12px,4vw,25px);
+
+        font-size:
+            clamp(9px,2.5vw,13px);
+
+        letter-spacing:1px;
+    }
+
+
+    .counter{
+        font-size:
+            clamp(7px,1.8vw,10px);
+    }
+
+
+    .privacy{
+        font-size:
+            clamp(8px,2.1vw,11px);
+
+        line-height:1.35;
+    }
+
+
+    /* animation details shrink with artwork */
 
     .flame{
-        width:5px;
-        height:12px;
+        width:4px;
+        height:9px;
 
-        margin-left:-2.5px;
-        margin-top:-10px;
+        margin-left:-2px;
+        margin-top:-8px;
+
+        box-shadow:
+            0 0 2px rgba(255,255,220,.95),
+            0 0 4px rgba(255,210,91,.9),
+            0 0 7px rgba(255,166,64,.55);
     }
+
+
+    .flame::after{
+        width:15px;
+        height:15px;
+    }
+
+
+    .twinkle{
+        width:2px;
+        height:2px;
+    }
+
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px){
+
+    #prayerForm{
+        top:28%;
+    }
+
+    .form-bottom{
+        margin-top:7px;
+    }
+
+    .privacy{
+        top:82%;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
@@ -1185,10 +1331,10 @@ textarea:focus{
     .fall::after,
     .spray,
     .twinkle,
-    .glint,
-    .visitor-light{
+    .glint{
         animation:none !important;
     }
+
 }
 
 </style>
@@ -1201,7 +1347,9 @@ textarea:focus{
 <main class="shrine">
 
 
-<!-- BACKGROUND -->
+<!-- =====================================================
+     ORIGINAL ARTWORK
+===================================================== -->
 
 <img
     class="art"
@@ -1210,13 +1358,17 @@ textarea:focus{
 >
 
 
-<!-- JESUS LIGHT -->
+<!-- =====================================================
+     JESUS LIGHT
+===================================================== -->
 
 <div class="halo-glow"></div>
 <div class="chest-glow"></div>
 
 
-<!-- WATERFALLS -->
+<!-- =====================================================
+     WATERFALLS
+===================================================== -->
 
 <div class="fall fall-left"></div>
 <div class="fall fall-right"></div>
@@ -1225,7 +1377,9 @@ textarea:focus{
 <div class="spray spray-right"></div>
 
 
-<!-- ANIMATED VISIBLE CANDLES -->
+<!-- =====================================================
+     FLICKERING DECORATIVE CANDLES
+===================================================== -->
 
 <i class="flame f1"></i>
 <i class="flame f2"></i>
@@ -1238,7 +1392,9 @@ textarea:focus{
 <i class="flame f8"></i>
 
 
-<!-- TWINKLING SKY -->
+<!-- =====================================================
+     TWINKLING STARS
+===================================================== -->
 
 <i class="twinkle t1"></i>
 <i class="twinkle t2"></i>
@@ -1260,7 +1416,9 @@ textarea:focus{
 <i class="twinkle t18"></i>
 
 
-<!-- LARGE GLINTS -->
+<!-- =====================================================
+     STAR GLINTS
+===================================================== -->
 
 <i class="glint g1"></i>
 <i class="glint g2"></i>
@@ -1268,46 +1426,16 @@ textarea:focus{
 <i class="glint g4"></i>
 
 
-<!-- VISITOR CANDLE RESPONSE -->
-
-<div
-    class="visitor-light"
-    id="visitorLight">
-</div>
-
-
-<!-- LIGHT A CANDLE -->
-
-<section class="candle-panel">
-
-    <h2 class="candle-title">
-        Light a Candle
-    </h2>
-
-    <button
-        type="button"
-        class="light-button"
-        id="lightButton">
-
-        LIGHT CANDLE
-
-    </button>
-
-    <div
-        class="candle-message"
-        id="candleMessage">
-    </div>
-
-</section>
-
-
-<!-- LEAVE A PRAYER -->
+<!-- =====================================================
+     LEAVE A PRAYER
+===================================================== -->
 
 <section class="prayer-panel">
 
     <h2 class="prayer-title">
         Leave a Prayer
     </h2>
+
 
     <form id="prayerForm">
 
@@ -1318,11 +1446,13 @@ textarea:focus{
             required
             aria-label="Write your prayer intention"></textarea>
 
+
         <div class="form-bottom">
 
             <span class="counter">
                 <span id="count">0</span> / 5000
             </span>
+
 
             <button
                 type="submit"
@@ -1335,6 +1465,7 @@ textarea:focus{
         </div>
 
     </form>
+
 
     <p class="privacy">
         Your prayer intention will be received privately and prayed over personally.
@@ -1350,32 +1481,6 @@ textarea:focus{
 <script>
 
 /* =========================================================
-   LIGHT A CANDLE
-========================================================= */
-
-const lightButton =
-    document.getElementById("lightButton");
-
-const visitorLight =
-    document.getElementById("visitorLight");
-
-const candleMessage =
-    document.getElementById("candleMessage");
-
-
-lightButton.addEventListener("click", () => {
-
-    visitorLight.classList.add("lit");
-
-    candleMessage.textContent =
-        "✦ YOUR CANDLE HAS BEEN LIT ✦";
-
-    lightButton.textContent =
-        "CANDLE LIT";
-});
-
-
-/* =========================================================
    CHARACTER COUNTER
 ========================================================= */
 
@@ -1386,25 +1491,36 @@ const count =
     document.getElementById("count");
 
 
-prayer.addEventListener("input", () => {
+prayer.addEventListener(
+    "input",
+    () => {
 
-    count.textContent =
-        prayer.value.length;
-});
+        count.textContent =
+            prayer.value.length;
+
+    }
+);
 
 
 /* =========================================================
    PRAYER SUBMISSION
 
-   Still disabled while we finish the visual stage.
+   Still temporarily disabled.
+
+   Once the layout is correct, this is where we'll reconnect
+   the existing Supabase Edge Function.
 ========================================================= */
 
 document
     .getElementById("prayerForm")
-    .addEventListener("submit", event => {
+    .addEventListener(
+        "submit",
+        event => {
 
-        event.preventDefault();
-    });
+            event.preventDefault();
+
+        }
+    );
 
 </script>
 
