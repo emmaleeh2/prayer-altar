@@ -8,16 +8,11 @@
 
 <style>
 
-/* ========================================
-   PAGE
-======================================== */
-
 *{
     box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
     margin:0;
     width:100%;
     height:100%;
@@ -32,32 +27,26 @@ body{
     background:
         radial-gradient(
             circle at center,
-            #fff7f4 0%,
-            #eee3f6 45%,
-            #d9cdea 100%
+            #fff8f5 0%,
+            #eee3f6 48%,
+            #ddd2ed 100%
         );
 }
 
 
-/* ========================================
+/* ==========================================
    SHRINE
-
-   1024 × 1536 = 2:3
-
-   Height now controls desktop sizing.
-   Whole artwork always fits on screen.
-======================================== */
+========================================== */
 
 .shrine{
     position:relative;
 
-    width:min(100vw, 66.6667vh);
-    aspect-ratio:2 / 3;
+    width:min(100vw,66.6667vh);
+    aspect-ratio:2/3;
 
     max-height:100vh;
 
     overflow:hidden;
-
     flex:none;
 }
 
@@ -69,41 +58,37 @@ body{
     height:100%;
 
     display:block;
-
-    user-select:none;
     pointer-events:none;
+    user-select:none;
 }
 
 
-/* ========================================
+/* ==========================================
    TWINKLING STARS
-======================================== */
+========================================== */
 
 .star{
     position:absolute;
-
     z-index:3;
 
-    width:.32%;
-    aspect-ratio:1;
+    width:2px;
+    height:2px;
 
     border-radius:50%;
 
-    background:#fffdf0;
+    background:#fffef0;
 
     opacity:.1;
 
     pointer-events:none;
 
     box-shadow:
-        0 0 2px #fff,
-        0 0 5px rgba(255,243,184,.95),
-        0 0 9px rgba(238,214,255,.75);
+        0 0 2px white,
+        0 0 5px #fff0a8,
+        0 0 9px rgba(236,210,255,.85);
 
-    animation:
-        twinkle 3.8s ease-in-out infinite;
+    animation:twinkle 3.8s ease-in-out infinite;
 }
-
 
 .s1{left:13.5%;top:5.3%;animation-delay:-.3s}
 .s2{left:8.7%;top:7.1%;animation-delay:-2.1s}
@@ -118,18 +103,15 @@ body{
 .s11{left:19%;top:31%;animation-delay:-.9s}
 .s12{left:82%;top:30%;animation-delay:-1.9s}
 
-
 @keyframes twinkle{
 
-    0%,
-    70%,
-    100%{
+    0%,70%,100%{
         opacity:.08;
         transform:scale(.5);
     }
 
     80%{
-        opacity:.7;
+        opacity:.65;
         transform:scale(1.2);
     }
 
@@ -139,115 +121,18 @@ body{
     }
 
     93%{
-        opacity:.18;
+        opacity:.2;
         transform:scale(.7);
     }
-
 }
 
 
-/* ========================================
-   LARGE STAR GLINTS
-======================================== */
-
-.starburst{
-    position:absolute;
-
-    z-index:3;
-
-    width:1px;
-    height:8px;
-
-    pointer-events:none;
-
-    opacity:.15;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            #fffde8,
-            transparent
-        );
-
-    filter:
-        drop-shadow(0 0 3px #fff)
-        drop-shadow(0 0 5px #ffe8a7);
-
-    animation:
-        starburst 5s ease-in-out infinite;
-}
-
-
-.starburst::after{
-    content:"";
-
-    position:absolute;
-
-    width:8px;
-    height:1px;
-
-    left:-3.5px;
-    top:3.5px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            #fffde8,
-            transparent
-        );
-}
-
-
-.sb1{
-    left:13.5%;
-    top:5.2%;
-    animation-delay:-1s;
-}
-
-.sb2{
-    left:86.7%;
-    top:6.4%;
-    animation-delay:-3.3s;
-}
-
-.sb3{
-    left:54.5%;
-    top:12%;
-    animation-delay:-2.2s;
-}
-
-
-@keyframes starburst{
-
-    0%,
-    72%,
-    100%{
-        opacity:.1;
-        transform:scale(.55);
-    }
-
-    82%{
-        opacity:1;
-        transform:scale(1.5);
-    }
-
-    91%{
-        opacity:.25;
-        transform:scale(.75);
-    }
-
-}
-
-
-/* ========================================
+/* ==========================================
    WATERFALLS
-======================================== */
+========================================== */
 
 .waterfall{
     position:absolute;
-
     z-index:3;
 
     overflow:hidden;
@@ -260,8 +145,8 @@ body{
         linear-gradient(
             to bottom,
             transparent,
-            #000 10%,
-            #000 85%,
+            black 10%,
+            black 85%,
             transparent
         );
 
@@ -269,14 +154,11 @@ body{
         linear-gradient(
             to bottom,
             transparent,
-            #000 10%,
-            #000 85%,
+            black 10%,
+            black 85%,
             transparent
         );
 }
-
-
-/* waterfall behind left side of altar */
 
 .waterfall.left{
     left:10.5%;
@@ -285,16 +167,12 @@ body{
     height:13%;
 }
 
-
-/* waterfall behind right side */
-
 .waterfall.right{
     right:10.5%;
     top:33%;
     width:9%;
     height:13%;
 }
-
 
 .waterfall::before{
     content:"";
@@ -310,58 +188,22 @@ body{
     background:
         repeating-linear-gradient(
             to bottom,
-
             transparent 0px,
             rgba(255,255,255,.12) 5px,
-
-            rgba(225,242,255,.32) 9px,
-
-            rgba(255,255,255,.08) 14px,
-
+            rgba(220,240,255,.34) 9px,
+            rgba(255,255,255,.07) 14px,
             transparent 22px
         );
 
-    animation:
-        waterfall 2.5s linear infinite;
+    animation:waterfallFlow 2.5s linear infinite;
 }
-
-
-.waterfall::after{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-
-            transparent 0%,
-            transparent 15%,
-
-            rgba(255,255,255,.18) 18%,
-
-            transparent 21%,
-            transparent 40%,
-
-            rgba(221,240,255,.18) 44%,
-
-            transparent 48%
-        );
-
-    animation:
-        waterLight 2s ease-in-out infinite alternate;
-}
-
 
 .waterfall.right::before{
     animation-duration:2.8s;
     animation-delay:-1.2s;
 }
 
-
-@keyframes waterfall{
+@keyframes waterfallFlow{
 
     from{
         transform:translateY(0);
@@ -370,89 +212,12 @@ body{
     to{
         transform:translateY(50%);
     }
-
 }
 
 
-@keyframes waterLight{
-
-    from{
-        opacity:.2;
-        transform:translateX(-2%);
-    }
-
-    to{
-        opacity:.7;
-        transform:translateX(3%);
-    }
-
-}
-
-
-/* ========================================
-   WATERFALL MIST
-======================================== */
-
-.mist{
-    position:absolute;
-
-    z-index:3;
-
-    width:12%;
-    height:3%;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(255,255,255,.55),
-            rgba(224,238,255,.18) 45%,
-            transparent 72%
-        );
-
-    animation:
-        mist 4.5s ease-in-out infinite alternate;
-}
-
-
-.mist.left{
-    left:9%;
-    top:43.5%;
-}
-
-
-.mist.right{
-    right:9%;
-    top:43.5%;
-    animation-delay:-2.2s;
-}
-
-
-@keyframes mist{
-
-    from{
-        opacity:.08;
-        transform:
-            translateX(-4%)
-            scale(.9);
-    }
-
-    to{
-        opacity:.25;
-        transform:
-            translateX(5%)
-            scale(1.1);
-    }
-
-}
-
-
-/* ========================================
+/* ==========================================
    POOL SHIMMER
-======================================== */
+========================================== */
 
 .pool{
     position:absolute;
@@ -475,19 +240,18 @@ body{
         linear-gradient(
             to bottom,
             transparent,
-            #000 35%,
-            #000
+            black 35%,
+            black
         );
 
     mask-image:
         linear-gradient(
             to bottom,
             transparent,
-            #000 35%,
-            #000
+            black 35%,
+            black
         );
 }
-
 
 .pool::before{
     content:"";
@@ -495,7 +259,6 @@ body{
     position:absolute;
 
     left:-80%;
-    top:0;
 
     width:80%;
     height:100%;
@@ -505,15 +268,13 @@ body{
             105deg,
             transparent,
             rgba(255,255,255,.08),
-            rgba(255,236,178,.34),
-            rgba(255,255,255,.1),
+            rgba(255,237,181,.36),
+            rgba(255,255,255,.12),
             transparent
         );
 
-    animation:
-        poolShimmer 8s ease-in-out infinite;
+    animation:poolShimmer 8s ease-in-out infinite;
 }
-
 
 @keyframes poolShimmer{
 
@@ -528,230 +289,202 @@ body{
     100%{
         transform:translateX(0);
     }
-
 }
 
 
-/* ========================================
+/* ==========================================
    LIGHT A CANDLE
-
-   Positioned in the blank altar-front area.
-======================================== */
+========================================== */
 
 .candle-panel{
     position:absolute;
 
     z-index:10;
 
-    left:18%;
-    top:58%;
+    left:14%;
+    top:57.4%;
 
-    width:64%;
-    height:8%;
+    width:72%;
+    height:9.5%;
 
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 }
 
-
 .candle-title{
-    margin:0 0 5%;
+    margin:0 0 10px;
 
-    color:#705a80;
+    color:#51385f;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 
-    font-size:
-        clamp(7px,1.7vh,14px);
-
+    font-size:15px;
     font-weight:bold;
 
-    letter-spacing:.16em;
+    letter-spacing:2px;
 
     text-transform:uppercase;
 
     text-shadow:
-        1px 1px rgba(255,255,255,.9);
+        1px 1px rgba(255,255,255,.95),
+        0 0 4px rgba(255,255,255,.8);
 }
-
 
 .candle-title::before,
 .candle-title::after{
     content:"✦";
 
-    color:#b38a55;
+    color:#9b6b37;
 
-    margin:0 .65em;
+    margin:0 7px;
 }
 
 
-/* ========================================
-   LIGHT CANDLE BUTTON
-======================================== */
+/* ==========================================
+   BUTTONS
+========================================== */
 
-.light-button{
+.light-button,
+.offer-button{
+
     appearance:none;
 
-    padding:
-        clamp(5px,.8vh,8px)
-        clamp(15px,2.6vh,24px);
-
-    border:
-        1px solid
-        rgba(155,111,58,.72);
-
+    border:1px solid #8f673d;
     border-radius:0;
 
     background:
         linear-gradient(
-            180deg,
-            rgba(255,249,222,.8),
-            rgba(235,203,159,.7)
+            #fff7da,
+            #e9c990
         );
 
     box-shadow:
         inset 1px 1px white,
-        inset -1px -1px
-        rgba(112,77,45,.2);
+        inset -1px -1px rgba(90,58,34,.25),
+        0 1px 2px rgba(82,54,72,.15);
 
-    color:#735436;
+    color:#553b31;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
-
-    font-size:
-        clamp(6px,1.25vh,10px);
+    font-family:"Courier New",Courier,monospace;
 
     font-weight:bold;
 
-    letter-spacing:.18em;
+    letter-spacing:1.5px;
 
     cursor:pointer;
 
-    transition:
-        box-shadow .2s,
-        background .2s,
-        transform .1s;
+    text-shadow:
+        1px 1px rgba(255,255,255,.65);
 }
 
+.light-button{
+    padding:7px 20px;
+    font-size:11px;
+}
 
-.light-button:hover{
+.offer-button{
+    padding:7px 18px;
+    font-size:10px;
+}
+
+.light-button:hover,
+.offer-button:hover{
+
     background:
         linear-gradient(
-            180deg,
-            rgba(255,250,224,.95),
-            rgba(242,211,163,.9)
+            #fff9df,
+            #efd09a
         );
 
     box-shadow:
-        0 0 9px
-        rgba(255,210,111,.65),
-
+        0 0 9px rgba(255,205,104,.65),
         inset 1px 1px white;
 }
 
-
-.light-button:active{
+.light-button:active,
+.offer-button:active{
     transform:translateY(1px);
 }
 
 
+/* ==========================================
+   CANDLE MESSAGE
+========================================== */
+
 .candle-message{
-    margin-top:3%;
+    margin-top:8px;
 
-    min-height:10px;
+    min-height:12px;
 
-    color:#806a7c;
+    color:#513b5d;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 
-    font-size:
-        clamp(5px,.9vh,7px);
+    font-size:8px;
+    font-weight:bold;
 
     text-align:center;
 }
 
 
-/* ========================================
-   PRAYER PANEL
-
-   Positioned inside lower architectural frame.
-======================================== */
+/* ==========================================
+   LEAVE A PRAYER
+========================================== */
 
 .prayer-panel{
     position:absolute;
 
     z-index:10;
 
-    left:20.5%;
-    top:69.3%;
+    left:18.5%;
+    top:69.1%;
 
-    width:59%;
-    height:18%;
+    width:63%;
+    height:19%;
 
     display:flex;
     flex-direction:column;
     align-items:center;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 }
 
-
 .prayer-title{
-    margin:0 0 3%;
+    margin:0 0 10px;
 
-    color:#705a80;
+    color:#51385f;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 
-    font-size:
-        clamp(7px,1.7vh,14px);
-
+    font-size:15px;
     font-weight:bold;
 
-    letter-spacing:.16em;
+    letter-spacing:2px;
 
     text-transform:uppercase;
 
     text-shadow:
-        1px 1px rgba(255,255,255,.9);
+        1px 1px rgba(255,255,255,.95),
+        0 0 4px rgba(255,255,255,.8);
 }
-
 
 .prayer-title::before,
 .prayer-title::after{
     content:"✦";
 
-    color:#b38a55;
+    color:#9b6b37;
 
-    margin:0 .65em;
+    margin:0 7px;
 }
 
 
-/* ========================================
+/* ==========================================
    PRAYER FORM
-======================================== */
+========================================== */
 
 #prayerForm{
     width:100%;
@@ -761,71 +494,65 @@ body{
     align-items:center;
 }
 
-
-/* Empty textarea — no suggested prayer */
-
 textarea{
     display:block;
 
     width:100%;
+    height:92px;
 
-    height:
-        clamp(55px,10vh,90px);
-
-    padding:2.5%;
+    padding:9px;
 
     resize:none;
 
     outline:none;
 
-    border:
-        1px solid
-        rgba(124,95,139,.38);
+    border:1px solid #755b7e;
 
     border-radius:0;
 
+    /*
+       Still translucent enough to see the shrine,
+       but now obviously a writable area.
+    */
+
     background:
-        rgba(255,247,244,.18);
+        rgba(255,246,244,.55);
 
     box-shadow:
-        inset 1px 1px
-        rgba(255,255,255,.5);
+        inset 1px 1px rgba(255,255,255,.85),
+        0 0 3px rgba(89,61,96,.12);
 
-    color:#66546e;
+    color:#432f4d;
 
-    caret-color:#a17346;
+    caret-color:#7d542e;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 
-    font-size:
-        clamp(6px,1.15vh,9px);
+    font-size:11px;
+    font-weight:500;
 
     line-height:1.5;
 }
 
 
+/* no placeholder */
+
 textarea:focus{
-    border-color:
-        rgba(168,125,72,.55);
+
+    border-color:#8c6037;
 
     background:
-        rgba(255,248,240,.3);
+        rgba(255,248,240,.65);
 
     box-shadow:
-        0 0 6px
-        rgba(255,215,135,.3),
-
-        inset 1px 1px
-        rgba(255,255,255,.7);
+        0 0 6px rgba(255,204,108,.42),
+        inset 1px 1px white;
 }
 
 
-/* ========================================
-   FORM CONTROLS
-======================================== */
+/* ==========================================
+   FORM BOTTOM
+========================================== */
 
 .form-bottom{
     position:relative;
@@ -836,123 +563,61 @@ textarea:focus{
     justify-content:center;
     align-items:center;
 
-    margin-top:3%;
+    margin-top:9px;
 }
-
 
 .counter{
     position:absolute;
 
     right:0;
 
-    color:#806e84;
+    color:#4f3a59;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 
-    font-size:
-        clamp(5px,.85vh,7px);
-}
-
-
-.offer-button{
-    appearance:none;
-
-    padding:
-        clamp(5px,.75vh,8px)
-        clamp(15px,2.5vh,24px);
-
-    border:
-        1px solid
-        rgba(155,111,58,.72);
-
-    border-radius:0;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,249,222,.8),
-            rgba(235,203,159,.7)
-        );
-
-    box-shadow:
-        inset 1px 1px white,
-        inset -1px -1px
-        rgba(112,77,45,.2);
-
-    color:#735436;
-
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
-
-    font-size:
-        clamp(6px,1.2vh,10px);
-
+    font-size:8px;
     font-weight:bold;
-
-    letter-spacing:.17em;
-
-    cursor:pointer;
 }
 
 
-.offer-button:hover{
-    box-shadow:
-        0 0 9px
-        rgba(255,210,111,.65),
-
-        inset 1px 1px white;
-}
-
-
-.offer-button:active{
-    transform:translateY(1px);
-}
-
-
-/* ========================================
-   PRIVACY
-======================================== */
+/* ==========================================
+   PRIVACY WORDING
+========================================== */
 
 .privacy{
-    margin:3% 0 0;
+    width:100%;
 
-    color:#76667c;
+    margin:10px 0 0;
+
+    color:#4b3555;
 
     text-align:center;
 
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
+    font-family:"Courier New",Courier,monospace;
 
-    font-size:
-        clamp(4px,.75vh,6px);
+    font-size:8px;
+    font-weight:bold;
 
     line-height:1.45;
+
+    text-shadow:
+        1px 1px rgba(255,255,255,.8);
 }
 
 
-/* ========================================
-   CANDLE-LIGHT EFFECT
-
-   This is intentionally an atmospheric glow,
-   NOT a fake flame placed over a guessed candle.
-======================================== */
+/* ==========================================
+   CANDLE LIGHTING EFFECT
+========================================== */
 
 .candle-light{
     position:absolute;
 
     z-index:5;
 
-    left:43%;
-    top:47%;
+    left:42%;
+    top:45%;
 
-    width:14%;
+    width:16%;
     aspect-ratio:1;
 
     border-radius:50%;
@@ -964,23 +629,20 @@ textarea:focus{
     background:
         radial-gradient(
             circle,
-            rgba(255,248,196,.55) 0%,
-            rgba(255,217,125,.22) 35%,
+            rgba(255,250,201,.58),
+            rgba(255,216,120,.2) 38%,
             transparent 72%
         );
 
-    transition:
-        opacity .8s ease;
+    transition:opacity .8s ease;
 
     animation:
-        candleGlow 2s ease-in-out infinite alternate;
+        candleGlow 1.8s ease-in-out infinite alternate;
 }
-
 
 .candle-light.lit{
-    opacity:.8;
+    opacity:.85;
 }
-
 
 @keyframes candleGlow{
 
@@ -991,122 +653,12 @@ textarea:focus{
     to{
         transform:scale(1.08);
     }
-
 }
 
 
-/* ========================================
-   LIGHTING SPARKLES
-======================================== */
-
-.blessing{
-    position:absolute;
-
-    z-index:12;
-
-    left:50%;
-    top:51%;
-
-    width:1px;
-    height:1px;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    box-shadow:
-        -22px -11px #fff7cf,
-        21px -17px #fff,
-        -35px 8px #ffe8a5,
-        36px 5px #fff,
-        -14px 25px #fff4c5,
-        16px 29px #fff;
-}
-
-
-.blessing.show{
-    animation:
-        blessing 1.7s ease-out;
-}
-
-
-@keyframes blessing{
-
-    0%{
-        opacity:0;
-        transform:scale(.4);
-    }
-
-    25%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0;
-        transform:scale(2.3);
-    }
-
-}
-
-
-/* ========================================
-   SUCCESS MESSAGE
-======================================== */
-
-.success{
-    display:none;
-
-    position:absolute;
-
-    z-index:30;
-
-    left:23%;
-    top:72%;
-
-    width:54%;
-
-    padding:4%;
-
-    border:
-        1px solid
-        rgba(161,120,67,.6);
-
-    background:
-        rgba(255,245,235,.95);
-
-    box-shadow:
-        0 0 15px
-        rgba(255,221,145,.5),
-
-        inset 0 0 12px white;
-
-    color:#6e5a71;
-
-    text-align:center;
-
-    font-family:
-        "Courier New",
-        Courier,
-        monospace;
-
-    font-size:
-        clamp(5px,1vh,8px);
-
-    line-height:1.6;
-}
-
-
-.success strong{
-    color:#89663c;
-}
-
-
-/* ========================================
-   PHONE / NARROW SCREEN
-
-   If width rather than height is limiting,
-   allow normal vertical page behaviour.
-======================================== */
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media(max-aspect-ratio:2/3){
 
@@ -1131,20 +683,16 @@ textarea:focus{
 }
 
 
-/* ========================================
+/* ==========================================
    REDUCED MOTION
-======================================== */
+========================================== */
 
 @media(prefers-reduced-motion:reduce){
 
     .star,
-    .starburst,
     .waterfall::before,
-    .waterfall::after,
-    .mist,
     .pool::before,
-    .candle-light,
-    .blessing{
+    .candle-light{
         animation:none !important;
     }
 
@@ -1156,11 +704,8 @@ textarea:focus{
 
 <body>
 
-
 <main class="shrine">
 
-
-<!-- ORIGINAL SHRINE ART -->
 
 <img
     class="art"
@@ -1169,7 +714,7 @@ textarea:focus{
 >
 
 
-<!-- TWINKLING STARS -->
+<!-- stars -->
 
 <i class="star s1"></i>
 <i class="star s2"></i>
@@ -1184,41 +729,29 @@ textarea:focus{
 <i class="star s11"></i>
 <i class="star s12"></i>
 
-<i class="starburst sb1"></i>
-<i class="starburst sb2"></i>
-<i class="starburst sb3"></i>
 
-
-<!-- RUNNING WATERFALLS -->
+<!-- animated waterfalls -->
 
 <div class="waterfall left"></div>
 <div class="waterfall right"></div>
 
-<div class="mist left"></div>
-<div class="mist right"></div>
 
-
-<!-- POOL SHIMMER -->
+<!-- pool -->
 
 <div class="pool"></div>
 
 
-<!-- ATMOSPHERIC CANDLE EFFECT -->
+<!-- candle illumination -->
 
 <div
     class="candle-light"
     id="candleLight">
 </div>
 
-<div
-    class="blessing"
-    id="blessing">
-</div>
 
-
-<!-- ===================================
+<!-- ======================================
      LIGHT A CANDLE
-=================================== -->
+====================================== -->
 
 <section class="candle-panel">
 
@@ -1226,12 +759,14 @@ textarea:focus{
         Light a Candle
     </h2>
 
+
     <button
         type="button"
         class="light-button"
         id="lightButton">
         LIGHT CANDLE
     </button>
+
 
     <div
         class="candle-message"
@@ -1241,9 +776,9 @@ textarea:focus{
 </section>
 
 
-<!-- ===================================
+<!-- ======================================
      LEAVE A PRAYER
-=================================== -->
+====================================== -->
 
 <section class="prayer-panel">
 
@@ -1281,34 +816,11 @@ textarea:focus{
 
 
     <p class="privacy">
-        Your intention will be received privately and personally prayed over.
-        <br>
-        No name or email is required · Prayers are not displayed publicly
+        Your prayer intention will be received privately and prayed over personally.
+        Prayers are not displayed publicly
     </p>
 
 </section>
-
-
-<!-- SUCCESS MESSAGE FOR LATER SUPABASE CONNECTION -->
-
-<div
-    class="success"
-    id="success">
-
-    <strong>
-        ✦ YOUR PRAYER HAS BEEN RECEIVED ✦
-    </strong>
-
-    <br><br>
-
-    Your intention has been placed upon the prayer altar
-    and will be personally prayed over.
-
-    <br><br>
-
-    May the Lord bless you and keep you. 🕯️
-
-</div>
 
 
 </main>
@@ -1316,9 +828,9 @@ textarea:focus{
 
 <script>
 
-/* ========================================
-   LIGHT A CANDLE
-======================================== */
+/* ======================================
+   LIGHT CANDLE
+====================================== */
 
 const lightButton =
     document.getElementById("lightButton");
@@ -1329,32 +841,20 @@ const candleLight =
 const candleMessage =
     document.getElementById("candleMessage");
 
-const blessing =
-    document.getElementById("blessing");
-
 
 lightButton.addEventListener("click", () => {
 
     candleLight.classList.add("lit");
 
     candleMessage.textContent =
-        "✦ Your candle has been lit ✦";
-
-
-    /* restart sparkle burst */
-
-    blessing.classList.remove("show");
-
-    void blessing.offsetWidth;
-
-    blessing.classList.add("show");
+        "✦ YOUR CANDLE HAS BEEN LIT ✦";
 
 });
 
 
-/* ========================================
+/* ======================================
    CHARACTER COUNTER
-======================================== */
+====================================== */
 
 const prayer =
     document.getElementById("prayer");
@@ -1371,11 +871,9 @@ prayer.addEventListener("input", () => {
 });
 
 
-/* ========================================
-   PRAYER SUBMISSION
-
-   Still disabled until the layout is approved.
-======================================== */
+/* ======================================
+   SUBMISSION STILL DISABLED FOR DESIGN
+====================================== */
 
 document
     .getElementById("prayerForm")
@@ -1386,7 +884,6 @@ document
     });
 
 </script>
-
 
 </body>
 </html>
