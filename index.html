@@ -1,263 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Prayer Altar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Prayer Altar</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body{
+margin:0;
+min-height:100vh;
+overflow-x:hidden;
+color:#575260;
+font-family:Georgia,"Times New Roman",serif;
+background:
+radial-gradient(circle at 12% 12%,rgba(255,210,225,.75),transparent 28%),
+radial-gradient(circle at 88% 18%,rgba(205,229,255,.85),transparent 32%),
+radial-gradient(circle at 14% 82%,rgba(205,245,232,.72),transparent 31%),
+radial-gradient(circle at 84% 78%,rgba(225,209,255,.75),transparent 34%),
+linear-gradient(145deg,#fffdf7,#f8f2ff 25%,#eef8ff 48%,#fff3f7 72%,#f2fff9);
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: #53505e;
-      font-family: Georgia, "Times New Roman", serif;
-      overflow-x: hidden;
+.page{
+position:relative;
+width:min(92%,760px);
+margin:auto;
+padding:60px 0 75px;
+text-align:center;
+}
 
-      background:
-        radial-gradient(circle at 15% 15%,
-          rgba(255, 210, 225, .72) 0,
-          transparent 28%),
+.stars{
+color:#c6a064;
+font-size:25px;
+letter-spacing:10px;
+margin-bottom:18px;
+text-shadow:0 0 15px rgba(255,220,150,.8);
+}
 
-        radial-gradient(circle at 85% 18%,
-          rgba(205, 229, 255, .85) 0,
-          transparent 32%),
+.eyebrow{
+color:#a58b68;
+font:11px Arial,sans-serif;
+letter-spacing:4px;
+text-transform:uppercase;
+}
 
-        radial-gradient(circle at 15% 78%,
-          rgba(205, 245, 232, .70) 0,
-          transparent 31%),
+h1{
+margin:12px 0 0;
+color:#555064;
+font-size:clamp(43px,9vw,72px);
+font-weight:normal;
+line-height:1;
+letter-spacing:-2px;
+text-shadow:0 2px white,0 8px 30px rgba(174,155,201,.2);
+}
 
-        radial-gradient(circle at 82% 78%,
-          rgba(225, 209, 255, .72) 0,
-          transparent 34%),
+.subtitle{
+max-width:530px;
+margin:24px auto 0;
+color:#777080;
+font-size:17px;
+line-height:1.8;
+font-style:italic;
+}
 
-        linear-gradient(
-          145deg,
-          #fffdf7 0%,
-          #f8f2ff 25%,
-          #eef8ff 48%,
-          #fff3f7 72%,
-          #f2fff9 100%
-        );
-    }
+.divider{
+display:flex;
+align-items:center;
+gap:14px;
+width:min(420px,85%);
+margin:38px auto;
+color:#c6a26b;
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .48;
+.divider:before,.divider:after{
+content:"";
+height:1px;
+flex:1;
+background:linear-gradient(90deg,transparent,#c9aa7c,transparent);
+}
 
-      background:
-        radial-gradient(circle at 50% -10%,
-          rgba(255,255,255,.95) 0,
-          rgba(255,255,255,.35) 25%,
-          transparent 52%);
-    }
+.scripture{
+max-width:520px;
+margin:auto;
+color:#777080;
+font-size:15px;
+line-height:1.8;
+}
 
-    .light {
-      position: fixed;
-      top: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 850px;
-      height: 700px;
-      pointer-events: none;
+.scripture b{
+display:block;
+margin-top:8px;
+color:#a28a68;
+font:11px Arial,sans-serif;
+font-weight:normal;
+letter-spacing:3px;
+text-transform:uppercase;
+}
 
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(255,255,255,.9),
-          rgba(255,248,218,.25) 35%,
-          transparent 68%
-        );
+.altar{
+position:relative;
+margin:45px auto 0;
+padding:44px 38px 40px;
+border:1px solid rgba(195,166,122,.42);
+border-radius:28px;
+background:rgba(255,255,255,.58);
+box-shadow:0 30px 80px rgba(112,99,142,.12),inset 0 1px white;
+backdrop-filter:blur(10px);
+}
 
-      filter: blur(12px);
-    }
+.altar:before{
+content:"✦";
+position:absolute;
+top:-17px;
+left:50%;
+transform:translateX(-50%);
+color:#c9a56b;
+font-size:25px;
+}
 
-    .page {
-      position: relative;
-      width: min(92%, 760px);
-      margin: auto;
-      padding: 70px 0 80px;
-      text-align: center;
-    }
+.candle{
+position:relative;
+width:46px;
+height:88px;
+margin:28px auto;
+border-radius:8px 8px 4px 4px;
+background:linear-gradient(90deg,#f1e5d4,#fffaf1,#ead8c3);
+box-shadow:0 12px 25px rgba(138,112,82,.15);
+}
 
-    .star {
-      color: #c8a56b;
-      font-size: 27px;
-      letter-spacing: 12px;
-      margin-bottom: 18px;
-      text-shadow: 0 0 15px rgba(255,220,150,.7);
-    }
+.wick{
+position:absolute;
+top:-10px;
+left:50%;
+width:2px;
+height:12px;
+background:#796958;
+}
 
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #a58b68;
-      font-size: 11px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-    }
+.flame{
+position:absolute;
+top:-43px;
+left:12px;
+width:22px;
+height:38px;
+border-radius:55% 45% 55% 45%;
+background:radial-gradient(circle at 50% 70%,#fff7c4 0 20%,#ffd98b 40%,#efb675 68%,transparent 72%);
+filter:drop-shadow(0 0 13px rgba(255,194,99,.9));
+animation:flicker 2.5s ease-in-out infinite;
+}
 
-    h1 {
-      margin: 0;
+@keyframes flicker{
+50%{transform:rotate(4deg) scale(.94,1.05)}
+}
 
-      font-weight: normal;
-      font-size: clamp(42px, 9vw, 73px);
-      line-height: .98;
-      letter-spacing: -2px;
+h2{
+margin:0 0 12px;
+color:#5e5969;
+font-size:28px;
+font-weight:normal;
+}
 
-      color: #555064;
+.intro{
+max-width:510px;
+margin:0 auto 28px;
+color:#7d7684;
+font-size:14px;
+line-height:1.7;
+}
 
-      text-shadow:
-        0 2px 0 rgba(255,255,255,.8),
-        0 7px 30px rgba(174,155,201,.18);
-    }
+label{
+display:block;
+margin-bottom:10px;
+color:#a48a67;
+font:10px Arial,sans-serif;
+letter-spacing:3px;
+text-transform:uppercase;
+}
 
-    .subtitle {
-      max-width: 530px;
-      margin: 24px auto 0;
+textarea{
+display:block;
+width:100%;
+min-height:180px;
+padding:20px;
+resize:vertical;
+border:1px solid rgba(177,157,188,.45);
+border-radius:17px;
+outline:none;
+color:#595463;
+background:rgba(255,255,255,.72);
+font:16px/1.65 Georgia,serif;
+}
 
-      color: #777080;
-      font-size: 17px;
-      line-height: 1.8;
-      font-style: italic;
-    }
+textarea::placeholder{
+color:#aaa3ae;
+font-style:italic;
+}
 
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+textarea:focus{
+border-color:#c29d67;
+box-shadow:0 0 0 4px rgba(220,198,157,.12);
+}
 
-      width: min(420px, 85%);
-      margin: 38px auto;
+.counter{
+margin-top:8px;
+text-align:right;
+color:#aaa2ac;
+font:10px Arial,sans-serif;
+}
 
-      color: #c6a26b;
-    }
+button{
+margin-top:25px;
+padding:15px 35px;
+border:1px solid #b8945e;
+border-radius:50px;
+color:#685b4a;
+background:linear-gradient(135deg,#fff,#f8e8cc);
+font:11px Georgia,serif;
+letter-spacing:3px;
+cursor:pointer;
+box-shadow:0 10px 28px rgba(146,117,78,.14);
+}
 
-    .divider::before,
-    .divider::after {
-      content: "";
-      height: 1px;
-      flex: 1;
+button:hover{
+transform:translateY(-2px);
+}
 
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(190,153,96,.65),
-        transparent
-      );
-    }
+.privacy{
+max-width:510px;
+margin:25px auto 0;
+color:#96909a;
+font:11px/1.7 Arial,sans-serif;
+}
 
-    .scripture {
-      max-width: 520px;
-      margin: auto;
+.closing{
+margin-top:45px;
+color:#948b99;
+font-size:13px;
+line-height:1.8;
+}
 
-      color: #777080;
-      font-size: 15px;
-      line-height: 1.8;
-    }
+.closing span{
+display:block;
+margin-top:14px;
+color:#c29d67;
+font-size:18px;
+letter-spacing:7px;
+}
 
-    .scripture strong {
-      display: block;
-      margin-top: 8px;
+@media(max-width:600px){
+.page{width:91%;padding-top:48px}
+.altar{padding:38px 20px 34px}
+.subtitle{font-size:15px}
+}
+</style>
+</head>
 
-      color: #a28a68;
-      font-weight: normal;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
+<body>
 
-    .altar {
-      position: relative;
+<main class="page">
 
-      margin: 45px auto 0;
-      padding: 44px 38px 40px;
+<div class="stars">✦ ✧ ✦</div>
 
-      border: 1px solid rgba(195,166,122,.38);
-      border-radius: 28px;
+<div class="eyebrow">A quiet place for prayer</div>
 
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.72),
-          rgba(255,255,255,.38)
-        );
+<h1>The Prayer Altar</h1>
 
-      box-shadow:
-        0 30px 80px rgba(112,99,142,.12),
-        inset 0 1px 0 rgba(255,255,255,.9);
+<p class="subtitle">
+Bring what is on your heart before God. No explanation is too small,
+no burden too heavy, and no prayer goes unseen.
+</p>
 
-      backdrop-filter: blur(12px);
-    }
+<div class="divider">✦</div>
 
-    .altar::before {
-      content: "✦";
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
+<div class="scripture">
+“Continue steadfastly in prayer, being watchful in it with thanksgiving.”
+<b>Colossians 4:2</b>
+</div>
 
-      width: 38px;
+<section class="altar">
 
-      color: #c9a56b;
-      font-size: 25px;
+<div class="candle">
+<div class="wick"></div>
+<div class="flame"></div>
+</div>
 
-      background: #fbf9ff;
-    }
+<h2>Leave a Prayer</h2>
 
-    .candle {
-      position: relative;
-      width: 46px;
-      height: 88px;
-      margin: 24px auto 27px;
+<p class="intro">
+You are welcome to leave your prayer intention here.
+It will not be displayed publicly. Your intention will be
+received privately and personally prayed over.
+</p>
 
-      border-radius: 8px 8px 4px 4px;
+<form id="prayerForm">
 
-      background:
-        linear-gradient(
-          90deg,
-          #f1e5d4,
-          #fffaf1 48%,
-          #ead8c3
-        );
+<label for="prayer">Your Prayer Intention</label>
 
-      box-shadow:
-        0 12px 25px rgba(138,112,82,.14);
-    }
+<textarea
+id="prayer"
+name="prayer"
+maxlength="5000"
+placeholder="Lord, I bring before You..."
+required></textarea>
 
-    .wick {
-      position: absolute;
-      top: -10px;
-      left: 50%;
+<div class="counter">
+<span id="count">0</span> / 5000
+</div>
 
-      width: 2px;
-      height: 12px;
+<button type="submit">OFFER PRAYER</button>
 
-      background: #796958;
-      transform: translateX(-50%);
-    }
+</form>
 
-    .flame {
-      position: absolute;
-      top: -44px;
-      left: 50%;
+<p class="privacy">
+No name or email is required. Your prayer will not be displayed publicly.
+Please avoid including identifying or contact information if you prefer
+to remain anonymous.
+</p>
 
-      width: 22px;
-      height: 38px;
+</section>
 
-      transform: translateX(-50%);
-      border-radius: 55% 45% 55% 45%;
+<div class="closing">
+May the Lord bless you and keep you.<br>
+May His face shine upon you and give you peace.
+<span>✦ ✧ ✦</span>
+</div>
 
-      background:
-        radial-gradient(
-          circle at 50% 70%,
-          #
+</main>
+
+<script>
+const prayer=document.getElementById("prayer");
+const count=document.getElementById("count");
+const form=document.getElementById("prayerForm");
+
+prayer.addEventListener("input",()=>{
+count.textContent=prayer.value.length;
+});
+
+form.addEventListener("submit",e=>{
+e.preventDefault();
+});
+</script>
+
+</body>
+</html>
