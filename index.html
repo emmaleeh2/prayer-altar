@@ -790,7 +790,102 @@ textarea:focus{
         1px 1px rgba(255,255,255,.9);
 }
 
+/* =========================================================
+   PRAYER RECEIVED MESSAGE
+========================================================= */
 
+.prayer-success{
+    display:none;
+
+    position:absolute;
+
+    left:0;
+    top:19%;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#432d4c;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size:12px;
+    line-height:1.45;
+}
+
+
+.success-star{
+    margin-bottom:5px;
+
+    color:#9a713c;
+
+    font-size:18px;
+}
+
+
+.success-heading{
+    margin:0 0 8px;
+
+    font-size:15px;
+    font-weight:bold;
+}
+
+
+.prayer-success p{
+    margin:
+        0 0 12px;
+}
+
+
+.success-reminder{
+    padding-top:5px;
+}
+
+
+.success-contact a{
+    color:#493154;
+
+    font-weight:bold;
+
+    text-decoration:underline;
+}
+
+
+.another-prayer-button{
+    appearance:none;
+
+    margin-top:2px;
+
+    padding:7px 15px;
+
+    border:1px solid #865c35;
+    border-radius:0;
+
+    background:#dae9f5;
+
+    color:#503326;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size:10px;
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+}
+
+
+.another-prayer-button:hover{
+    background:#e8f2f9;
+}
 /* =========================================================
    MOBILE
 
@@ -798,6 +893,50 @@ textarea:focus{
 ========================================================= */
 
 @media(max-width:700px){
+
+.prayer-success{
+    top:18%;
+
+    padding:0 4%;
+
+    font-size:
+        clamp(7px,2vw,12px);
+
+    line-height:1.35;
+}
+
+
+.success-star{
+    margin-bottom:2px;
+
+    font-size:
+        clamp(11px,3vw,18px);
+}
+
+
+.success-heading{
+    margin-bottom:
+        clamp(3px,1vw,8px);
+
+    font-size:
+        clamp(9px,2.6vw,15px);
+}
+
+
+.prayer-success p{
+    margin-bottom:
+        clamp(5px,1.7vw,12px);
+}
+
+
+.another-prayer-button{
+    padding:
+        clamp(4px,1.2vw,7px)
+        clamp(8px,2.8vw,15px);
+
+    font-size:
+        clamp(7px,1.8vw,10px);
+}
 
     body{
         width:100%;
@@ -1039,7 +1178,43 @@ textarea:focus{
 
 
     </form>
+<div id="prayerSuccess" class="prayer-success">
 
+    <div class="success-star">
+        ✦
+    </div>
+
+    <p class="success-heading">
+        Your prayer has been received.
+    </p>
+
+    <p>
+        It will be held privately and prayed over personally.
+    </p>
+
+    <p class="success-reminder">
+        <strong>A gentle reminder:</strong><br>
+        God makes everything beautiful in His time and answers
+        our prayers according to His will.
+    </p>
+
+    <p class="success-contact">
+        For support, contact Emma at<br>
+        <a href="mailto:hismerciesmend@gmail.com">
+            hismerciesmend@gmail.com
+        </a>
+    </p>
+
+    <button
+        type="button"
+        id="anotherPrayer"
+        class="another-prayer-button">
+
+        LEAVE ANOTHER PRAYER
+
+    </button>
+
+</div>
 
     <p class="privacy">
         Your prayer intention will be received privately and prayed over personally.
@@ -1070,6 +1245,15 @@ const form =
 
 const submitButton =
     form.querySelector('button[type="submit"]');
+   
+   const successMessage =
+    document.getElementById("prayerSuccess");
+
+const anotherPrayerButton =
+    document.getElementById("anotherPrayer");
+
+const privacyMessage =
+    document.querySelector(".privacy");
 
 
 prayer.addEventListener(
@@ -1150,24 +1334,16 @@ form.addEventListener(
 
             prayer.value = "";
 
-            count.textContent = "0";
+count.textContent = "0";
 
-            submitButton.textContent =
-                "PRAYER RECEIVED";
+form.style.display =
+    "none";
 
+privacyMessage.style.display =
+    "none";
 
-            setTimeout(
-                () => {
-
-                    submitButton.textContent =
-                        "SUBMIT PRAYER";
-
-                    submitButton.disabled =
-                        false;
-
-                },
-                3000
-            );
+successMessage.style.display =
+    "block";
 
 
         } catch (error) {
@@ -1191,6 +1367,34 @@ form.addEventListener(
                 false;
 
         }
+
+    }
+);
+
+/* =========================================================
+   LEAVE ANOTHER PRAYER
+========================================================= */
+
+anotherPrayerButton.addEventListener(
+    "click",
+    () => {
+
+        successMessage.style.display =
+            "none";
+
+        form.style.display =
+            "block";
+
+        privacyMessage.style.display =
+            "block";
+
+        submitButton.disabled =
+            false;
+
+        submitButton.textContent =
+            "SUBMIT PRAYER";
+
+        prayer.focus();
 
     }
 );
